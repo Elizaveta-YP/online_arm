@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './SparePartForm.css';
 import SuccessModal from '../SuccessModal/SuccessModal';
+import Add from '../../image/add.png';
 
 const RequestItem = ({ request, index, onUpdate, onRemove, onFileChange, onFileRemove }) => {
   const fileInputRef = useRef(null);
@@ -54,15 +55,13 @@ const RequestItem = ({ request, index, onUpdate, onRemove, onFileChange, onFileR
 
   return (
     <div className="requestItem">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-        <h3>Заявка №{index + 1}</h3>
-        {index > 0 && (
-          <button type="button" onClick={() => onRemove(index)} style={{ background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer' }}>✕</button>
-        )}
-      </div>
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '10px' }}>
+  {index > 0 && (
+    <button type="button" onClick={() => onRemove(index)} style={{ background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer' }}>✕</button>
+  )}
+</div>
 
       <div className="formGroup">
-        <label htmlFor={`phone-${index}`}>Номер телефона</label>
         <input
           className="accentBorder"
           type="tel"
@@ -71,13 +70,14 @@ const RequestItem = ({ request, index, onUpdate, onRemove, onFileChange, onFileR
           value={request.phone}
           onChange={handleChange}
           onBlur={handlePhoneBlur}
+          placeholder="Номер телефона"
           required
         />
+         <span className="required-star">*</span>
         {phoneError && <span className="error">{phoneError}</span>}
       </div>
 
       <div className="formGroup">
-        <label htmlFor={`organization-${index}`}>Название организации</label>
         <input
           className="accentBorder"
           type="text"
@@ -85,12 +85,13 @@ const RequestItem = ({ request, index, onUpdate, onRemove, onFileChange, onFileR
           name="organization"
           value={request.organization}
           onChange={handleChange}
+          placeholder="Название организации"
           required
         />
+         <span className="required-star">*</span>
       </div>
 
       <div className="formGroup">
-        <label htmlFor={`fullName-${index}`}>ФИО ответственного</label>
         <input
           className="accentBorder"
           type="text"
@@ -98,12 +99,13 @@ const RequestItem = ({ request, index, onUpdate, onRemove, onFileChange, onFileR
           name="fullName"
           value={request.fullName}
           onChange={handleChange}
+          placeholder="ФИО ответственного"
           required
         />
+        <span className="required-star">*</span>
       </div>
 
       <div className="formGroup">
-        <label htmlFor={`description-${index}`}>Описание запчасти (обязательно пишите количество)</label>
         <textarea
           maxLength={1500}
           className="accentBorder"
@@ -112,44 +114,57 @@ const RequestItem = ({ request, index, onUpdate, onRemove, onFileChange, onFileR
           value={request.description}
           onChange={handleDescriptionChange}
           ref={textareaRef}
+          placeholder="Опишите запчасть, обязательно укажите количество"
           required
           style={{ resize: 'none', overflow: 'hidden' }}
         />
+        <span className="required-star">*</span>
       </div>
 
-      <div className="formGroup">
-        <label>Приложите фото или видео:</label>
-        <div className="customFileUpload">
-          <input
-            type="file"
-            ref={fileInputRef}
-            onChange={handleFileChangeInternal}
-            accept="image/*,video/*"
-            multiple
-            style={{ display: 'none' }}
-          />
-          <button
-            type="button"
-            className="fileUploadButton"
-            onClick={handleFileButtonClick}
-          >
-            <button type="button" onClick={() => onRemove(index)} style={{ background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer', transform: 'rotate(45deg)'}}>✕</button>
-          </button>
-        </div>
-        {request.files.length > 0 && (
-          <div className="fileList">
-            {request.files.map((file, fileIndex) => (
-              <div key={fileIndex} className="fileItem">
-                <span>{file.name}</span>
-                <button type="button" onClick={() => onFileRemove(index, fileIndex)}>
-                  ✕
-                </button>
-              </div>
-            ))}
+ <div className="formGroup">
+  <input
+    type="file"
+    ref={fileInputRef}
+    onChange={handleFileChangeInternal}
+    accept="image/*,video/*"
+    multiple
+    style={{ display: 'none' }}
+  />
+  {request.files.length === 0 ? (
+    <button
+      type="button"
+      className="fileUploadButton"
+      onClick={handleFileButtonClick}
+    >
+      Приложите фото или видео
+      <img src={Add} alt="Добавить"/>
+    </button>
+  ) : (
+    <div
+      className="fileUploadButton fileListMode"
+      onClick={handleFileButtonClick}
+    >
+      <div className="fileList">
+        {request.files.map((file, fileIndex) => (
+          <div key={fileIndex} className="fileItem">
+            <span>{file.name}</span>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation(); 
+                onFileRemove(index, fileIndex);
+              }}
+            >
+              ✕
+            </button>
           </div>
-        )}
+        ))}
       </div>
+      <img src={Add} alt="Добавить" />
     </div>
+  )}
+</div>
+</div>
   );
 };
 
@@ -220,7 +235,7 @@ const SparePartForm = ({ onClose }) => {
 
   return (
     <div className="partRequestForm">
-      <h2>Подать заявку на запчасть</h2>
+      <h2 className="subtitle">Подать заявку на запчасть</h2>
       <form onSubmit={handleSubmit}>
         {requests.map((request, index) => (
           <RequestItem
@@ -236,7 +251,8 @@ const SparePartForm = ({ onClose }) => {
 
         <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
           <button className="addButton" type="button" onClick={addRequest}>
-            Создать еще одну заявку
+            Здесь вы можете добавить ещё одну заявку на запчасть
+            <img src={Add} alt="Добавить" />
           </button>
         </div>
 

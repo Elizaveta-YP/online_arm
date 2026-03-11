@@ -1,10 +1,12 @@
 :root {
     --title-size: 28px;
-    --subtitle-size: 16px;
-    --text: 14px;
-    --subtitle-weight: 700;
+    --subtitle-size: 24px;
+    --text: 18px;
+    --subtitle-weight: 500;
     --bg-color: #333;
     --neutral-color: #fff;
     --border-color: #b0b0b0;
+    --background-color: #ffb366;
     --accent-color: #279dd8;
+    --fields: #ffe6cc;
 }

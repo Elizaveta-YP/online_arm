@@ -1,5 +1,4 @@
 .requestItem {
-  border: 1px solid var(--border-color);
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 8px;
@@ -8,6 +7,7 @@
 .partRequestForm {
   max-width: 500px;
   margin: 0 auto;
+  padding-bottom: 80px; 
 }
 
 .formGroup {
@@ -15,131 +15,175 @@
   flex-direction: column;
   margin-bottom: 15px;
   font-size: var(--subtitle-size);
-}
-
-.formGroup label {
-  margin-bottom: 5px;
-  font-weight: bold;
-  font-size: var(--subtitle-size);
+  position: relative; 
 }
 
 .formGroup input,
-.formGroup textarea {
+.formGroup textarea,
+.formGroup select {
   padding: 8px;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-}
-
-.formGroup input,
-.formGroup select,
-.formGroup textarea {
-  width: 100%;
-  box-sizing: border-box; 
-}
-
-.dateTimeGroup .formGroup {
-  flex: 1;
-}
-
-.formActions {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-}
-
-.formActions button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.formActions button[type="submit"] {
-  pointer-events: auto;
-  background-color: var(--neutral-color);
   border: 1px solid var(--border-color);
   border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 14px;
-  font-weight: var(--subtitle-weight);
-  color: var(--bg-color);
-  transition: all 0.2s ease-in-out;
-}
-
-.formActions button[type="button"] {
-  background-color: var(--bg-color);
-  color: var(--neutral-color);
-}
-
-.buttonClose {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.formActions button[type="submit"]:hover {
-  background-color: var(--accent-color);
-  border-color: var(--border-color);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.accentBorder {
-  border-radius: 5px;
-  padding: 8px;
-  border: 1px solid var(--border-color);
+  background-color: var(--fields);
+  font-size: var(--text);
   width: 100%;
   box-sizing: border-box;
 }
 
-.accentBorder:hover {
-  border: 1.5px solid var(--accent-color);
+.formGroup select {
+  appearance: none; 
 }
 
-.accentBorder:focus {
-  border: 2px solid var(--accent-color);
-  outline: none;
+.required-star {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: red;
+  font-size: 1.2rem;
+  font-weight: bold;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.fileUploadButton {
-  border: none;
-  background-color: var(--neutral-color);
+.formGroup textarea ~ .required-star {
+  top: 12px;
+  transform: none;
 }
 
-.fileUploadButton img {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-}
-
-.customFileUpload {
-  margin-block-start: 10px;
+.formGroup select ~ .required-star {
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .addButton {
   background: none;
-  border: 1px dashed var(--accent-color);
-  border-radius: 30px;
-  padding: 10px 20px;
+  border: none;
+  padding: 15px 25px;
   cursor: pointer;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   font-size: var(--text);
   font-weight: var(--subtitle-weight);
+  transition: all 0.2s ease;
+  width: auto;
+  box-sizing: border-box;
 }
 
-.addButton,
-.formActions button[type="submit"] {
-  min-width: 240px;
+.addButton img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.formActions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--background-color);
   padding: 10px 20px;
   box-sizing: border-box;
+  z-index: 100;
+  margin: 0;
+  display: block;
+}
+
+.formActions button[type="submit"] {
+  width: 100%;
+  border-radius: 0;
+  padding: 16px 0;
+  background-color: var(--background-color);
+  color: var(--bg-color);
+  font-size: 1.2rem;
+  font-weight: var(--subtitle-weight);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.subtitle {
+  background-color: var(--accent-color);
+  font-size: var(--title-size);
+  font-weight: var(--subtitle-weight);
+  border-radius: 30px;
+  padding: 10px 24px;
+  display: inline-block;
+  margin-bottom: 32px;
   text-align: center;
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+
+.fileUploadButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--fields);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  padding: 12px 24px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #757474;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.fileUploadButton img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.fileUploadButton.fileListMode {
+  padding: 8px;
+  cursor: default; 
+}
+
+.fileListMode .fileList {
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 8px;
+}
+
+.fileListMode .fileItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+
+.fileListMode .fileItem span {
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.fileListMode .fileItem button {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.fileListMode .fileItem button:hover {
+  color: #d32f2f;
 }
 
 .error {

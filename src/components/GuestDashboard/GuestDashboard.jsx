@@ -55,7 +55,7 @@ const GuestDashboard = ({ onLogout }) => {
       default:
         return (
           <>
-            <h2>Гость</h2>
+            <h2 className="subtitle">Гость</h2>
             <div className="guestButtons">
               <button onClick={handlePartRequest}>Подать заявку на запчасть</button>
               <button onClick={handleRepairRequest}>Подать заявку на ремонт оборудования</button>

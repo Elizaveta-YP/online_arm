@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './RepairRequestForm.css'; 
+import './RepairRequestForm.css';
 import SuccessModal from '../SuccessModal/SuccessModal';
+import Add from '../../image/add.png';
 
 const RepairRequestItem = ({ request, index, onUpdate, onRemove, onFileChange, onFileRemove }) => {
   const fileInputRef = useRef(null);
@@ -52,31 +53,17 @@ const RepairRequestItem = ({ request, index, onUpdate, onRemove, onFileChange, o
     }
   };
 
-  const generateTimeSlots = () => {
-  const slots = [];
-  for (let hour = 8; hour <= 20; hour++) {
-    for (let minute = 0; minute < 60; minute += 30) {
-      const time = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
-      slots.push(time);
-    }
-  }
-  if (slots[slots.length - 1] === '20:30') slots.pop();
-  return slots;
-};
-
-const timeSlots = generateTimeSlots();
-
   return (
     <div className="requestItem">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-        <h3>Заявка на ремонт №{index + 1}</h3>
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '10px' }}>
         {index > 0 && (
-          <button type="button" onClick={() => onRemove(index)} style={{ background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer' }}>✕</button>
+          <button type="button" onClick={() => onRemove(index)} style={{ background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer' }}>
+            ✕
+          </button>
         )}
       </div>
 
       <div className="formGroup">
-        <label htmlFor={`phone-${index}`}>Номер телефона</label>
         <input
           className="accentBorder"
           type="tel"
@@ -85,13 +72,14 @@ const timeSlots = generateTimeSlots();
           value={request.phone}
           onChange={handleChange}
           onBlur={handlePhoneBlur}
+          placeholder="Номер телефона"
           required
         />
+        <span className="required-star">*</span>
         {phoneError && <span className="error">{phoneError}</span>}
       </div>
 
       <div className="formGroup">
-        <label htmlFor={`organization-${index}`}>Название организации</label>
         <input
           className="accentBorder"
           type="text"
@@ -99,12 +87,13 @@ const timeSlots = generateTimeSlots();
           name="organization"
           value={request.organization}
           onChange={handleChange}
+          placeholder="Название организации"
           required
         />
+        <span className="required-star">*</span>
       </div>
 
       <div className="formGroup">
-        <label htmlFor={`fullName-${index}`}>ФИО ответственного</label>
         <input
           className="accentBorder"
           type="text"
@@ -112,12 +101,13 @@ const timeSlots = generateTimeSlots();
           name="fullName"
           value={request.fullName}
           onChange={handleChange}
+          placeholder="ФИО ответственного"
           required
         />
+        <span className="required-star">*</span>
       </div>
 
       <div className="formGroup">
-        <label htmlFor={`problem-${index}`}>Опишите вашу проблему</label>
         <textarea
           maxLength={2000}
           className="accentBorder"
@@ -126,70 +116,58 @@ const timeSlots = generateTimeSlots();
           value={request.problemDescription}
           onChange={handleDescriptionChange}
           ref={textareaRef}
+          placeholder="Опишите проблему"
           required
           style={{ resize: 'none', overflow: 'hidden' }}
         />
+        <span className="required-star">*</span>
       </div>
 
-      <div className="formGroup" style={{ display: 'flex', gap: '10px' }}>
-        <div style={{ flex: 1 }}>
-          <label htmlFor={`date-${index}`}>Желаемая дата</label>
-          <input
-            className="accentBorder"
-            type="date"
-            id={`date-${index}`}
-            name="desiredDate"
-            value={request.desiredDate}
-            onChange={handleChange}
-          />
-        </div>
-        <div style={{ flex: 1 }}>
-            <label htmlFor={`time-${index}`}>Желаемое время</label>
-            <select
-                className="accentBorder"
-                id={`time-${index}`}
-                name="desiredTime"
-                value={request.desiredTime}
-                onChange={handleChange}
-                style={{ padding: '8px', width: '100%' }}
-            >
-                <option value="" disabled>Выберите время</option>
-                {timeSlots.map(time => (
-                <option key={time} value={time}>{time}</option>
-                ))}
-            </select>
-        </div>
-    </div>
+      <div className="formGroup">
+        <input
+          className="accentBorder"
+          type="text"
+          id={`desiredDateTime-${index}`}
+          name="desiredDateTime"
+          value={request.desiredDateTime}
+          onChange={handleChange}
+          placeholder="Желаемая дата и время приезда"
+        />
+      </div>
 
       <div className="formGroup">
-        <label>Приложите фото или видео:</label>
-        <div className="customFileUpload">
-          <input
-            type="file"
-            ref={fileInputRef}
-            onChange={handleFileChangeInternal}
-            accept="image/*,video/*"
-            multiple
-            style={{ display: 'none' }}
-          />
-          <button
-            type="button"
-            className="fileUploadButton"
-            onClick={handleFileButtonClick}
-          >
-            <span style={{ transform: 'rotate(45deg)', display: 'inline-block' }}>✕</span>
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileChangeInternal}
+          accept="image/*,video/*"
+          multiple
+          style={{ display: 'none' }}
+        />
+        {request.files.length === 0 ? (
+          <button type="button" className="fileUploadButton" onClick={handleFileButtonClick}>
+            Приложите фото или видео
+            <img src={Add} alt="Добавить" />
           </button>
-        </div>
-        {request.files.length > 0 && (
-          <div className="fileList">
-            {request.files.map((file, fileIndex) => (
-              <div key={fileIndex} className="fileItem">
-                <span>{file.name}</span>
-                <button type="button" onClick={() => onFileRemove(index, fileIndex)}>
-                  ✕
-                </button>
-              </div>
-            ))}
+        ) : (
+          <div className="fileUploadButton fileListMode" onClick={handleFileButtonClick}>
+            <div className="fileList">
+              {request.files.map((file, fileIndex) => (
+                <div key={fileIndex} className="fileItem">
+                  <span>{file.name}</span>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onFileRemove(index, fileIndex);
+                    }}
+                  >
+                    ✕
+                  </button>
+                </div>
+              ))}
+            </div>
+            <img src={Add} alt="Добавить" />
           </div>
         )}
       </div>
@@ -205,14 +183,12 @@ const RepairRequestForm = ({ onClose }) => {
       organization: '',
       fullName: '',
       problemDescription: '',
-      desiredDate: '',
-      desiredTime: '',
+      desiredDateTime: '', 
       files: [],
     }
   ]);
   const [showSuccess, setShowSuccess] = useState(false);
 
-// ДОБАВИТЬ ЗАЯВКУ, НЕ УБИРАЕМ ПОЛЯ, А ДОБАВЛЯЕМ РАНЕЕ ВВЕДЁННЫЕ ДАННЫЕ ПОЛЬЗОВАТЕЛЯ
   const addRequest = () => {
     const lastRequest = requests[requests.length - 1];
     setRequests([
@@ -223,8 +199,7 @@ const RepairRequestForm = ({ onClose }) => {
         organization: lastRequest.organization,
         fullName: lastRequest.fullName,
         problemDescription: '',
-        desiredDate: '',
-        desiredTime: '',
+        desiredDateTime: lastRequest.desiredDateTime, 
         files: [],
       }
     ]);
@@ -246,7 +221,6 @@ const RepairRequestForm = ({ onClose }) => {
     setRequests(prev => prev.map((req, i) => i === requestIndex ? { ...req, files: req.files.filter((_, fIdx) => fIdx !== fileIndex) } : req));
   };
 
-  // ВАЛИДАЦИЯ ПРИ ОТПРАВКЕ
   const handleSubmit = (e) => {
     e.preventDefault();
     let hasErrors = false;
@@ -268,8 +242,8 @@ const RepairRequestForm = ({ onClose }) => {
   };
 
   return (
-    <div className="partRequestForm"> 
-      <h2>Подать заявку на ремонт оборудования</h2>
+    <div className="partRequestForm">
+      <h2 className="subtitle">Подать заявку на ремонт оборудования</h2>
       <form onSubmit={handleSubmit}>
         {requests.map((request, index) => (
           <RepairRequestItem
@@ -285,7 +259,8 @@ const RepairRequestForm = ({ onClose }) => {
 
         <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
           <button className="addButton" type="button" onClick={addRequest}>
-            Создать еще одну заявку
+            Создать ещё одну заявку
+            <img src={Add} alt="Добавить" />
           </button>
         </div>
 

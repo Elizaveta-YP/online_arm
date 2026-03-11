@@ -38,8 +38,5 @@
   font-size: var(--subtitle-size);
   cursor: pointer;
   transition: background-color 0.2s;
-}
-
-.modalContent button:hover {
-  background-color: var(--accent-color);
+   background-color: var(--accent-color);
 }

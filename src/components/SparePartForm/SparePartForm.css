@@ -1,8 +1,7 @@
 .requestItem {
-border: 1px solid var(--border-color);
-padding: 15px;
-margin-bottom: 20px;
-border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
 }
 
 .partRequestForm {
@@ -27,35 +26,43 @@ border-radius: 8px;
 .formGroup textarea {
   padding: 8px;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: 30px;
+  background-color: var(--fields);
+  font-size: var(--text);
 }
 
 .formActions {
-  display: flex;
   gap: 10px;
   justify-content: center;
   align-items: center;
   margin: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--background-color);
+  padding: 10px 20px;
+  box-sizing: border-box;
+  z-index: 100;
+  margin: 0;
+  display: block;
 }
 
 .formActions button {
   padding: 10px 15px;
-  border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .formActions button[type="submit"] {
-  pointer-events: auto;  
-  background-color: var(--neutral-color);
-  border: 1px solid var(--border-color);
-  border-radius: 30px;   
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 14px;
-  font-weight: var(--subtitle-weight);
+  width: 100%;
+  border-radius: 0;
+  padding: 16px 0;
+  background-color: var(--background-color);
   color: var(--bg-color);
-  transition: all 0.2s ease-in-out;
+  font-size: 1.2rem;
+  font-weight: var(--subtitle-weight);
+  transition: all 0.2s ease;
 }
 
 .formActions button[type="button"] {
@@ -64,67 +71,192 @@ border-radius: 8px;
 }
 
 .buttonClose {
- background: none;
- border: none; 
- font-size: 20px;
- cursor: pointer;
-}
-
-.formActions button[type="submit"]:hover {
-  background-color: var(--accent-color);
-  border-color: var(--border-color);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.accentBorder:hover {
-    border: 1.5px solid var(--accent-color);
-}
-
-.accentBorder:focus {
-    border: 2px solid var(--accent-color);
-    outline: none;
-}
-
-.fileUploadButton {
-    border: none;
-    background-color: var(--neutral-color);
-} 
-
- .fileUploadButton img {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .customFileUpload {
-  margin-block-start: 10px;
+  background-color: var(--fields);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  padding: 8px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: var(--subtitle-size);
+  color: var(--bg-color);
+  transition:
+    border 0.2s ease,
+    background-color 0.2s ease;
+  box-sizing: border-box;
 }
 
 .addButton {
   background: none;
-  border: 1px dashed var(--accent-color);
-  border-radius: 30px;
-  padding: 10px 20px;
+  border: none;
+  padding: 15px 25px;
   cursor: pointer;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   font-size: var(--text);
   font-weight: var(--subtitle-weight);
+  transition: all 0.2s ease;
+  width: auto;
+  box-sizing: border-box;
 }
 
 .addButton,
 .formActions button[type="submit"] {
-  min-width: 240px;        
-  padding: 10px 20px;      
-  box-sizing: border-box;   
-  text-align: center;       
-  white-space: nowrap;      
+  min-width: 240px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .error {
   color: red;
   font-size: 12px;
   margin-top: 5px;
+}
+
+.subtitle {
+  background-color: var(--accent-color);
+  font-size: var(--title-size);
+  font-weight: var(--subtitle-weight);
+  border-radius: 30px;
+  padding: 10px 24px;
+  display: inline-block;
+  margin-bottom: 32px;
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+
+.fileUploadButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--fields);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  padding: 12px 24px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #757474;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.fileUploadButton img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  background-color: var(--fields);
+}
+
+button.fileUploadButton {
+  background-color: var(--fields);
+}
+
+button.fileUploadButton img {
+  width: 40px;
+  height: 40px;
+}
+
+.formGroup {
+  position: relative;
+}
+
+.required-star {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: red;
+  font-size: 1.2rem;
+  font-weight: bold;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.formGroup textarea ~ .required-star {
+  top: 12px;
+  transform: none;
+}
+
+.partRequestForm {
+  padding-bottom: 80px;
+}
+
+.fileUploadButton.fileListMode {
+  padding: 8px;
+  cursor: default;
+}
+
+.fileListMode .fileList {
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 8px;
+}
+
+.fileListMode .fileItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+
+.fileListMode .fileItem span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.fileListMode .fileItem button {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.fileListMode .fileItem button:hover {
+  color: #d32f2f;
+}
+
+.addMoreButton {
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: background-color 0.2s;
+}
+
+.addMoreButton:hover {
+  background-color: var(--neutral-color);
 }
