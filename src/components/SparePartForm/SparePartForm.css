@@ -1,0 +1,130 @@
+.requestItem {
+border: 1px solid var(--border-color);
+padding: 15px;
+margin-bottom: 20px;
+border-radius: 8px;
+}
+
+.partRequestForm {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  font-size: var(--subtitle-size);
+}
+
+.formGroup label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: var(--subtitle-size);
+}
+
+.formGroup input,
+.formGroup textarea {
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.formActions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.formActions button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.formActions button[type="submit"] {
+  pointer-events: auto;  
+  background-color: var(--neutral-color);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;   
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  font-weight: var(--subtitle-weight);
+  color: var(--bg-color);
+  transition: all 0.2s ease-in-out;
+}
+
+.formActions button[type="button"] {
+  background-color: var(--bg-color);
+  color: var(--neutral-color);
+}
+
+.buttonClose {
+ background: none;
+ border: none; 
+ font-size: 20px;
+ cursor: pointer;
+}
+
+.formActions button[type="submit"]:hover {
+  background-color: var(--accent-color);
+  border-color: var(--border-color);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.accentBorder:hover {
+    border: 1.5px solid var(--accent-color);
+}
+
+.accentBorder:focus {
+    border: 2px solid var(--accent-color);
+    outline: none;
+}
+
+.fileUploadButton {
+    border: none;
+    background-color: var(--neutral-color);
+} 
+
+ .fileUploadButton img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.customFileUpload {
+  margin-block-start: 10px;
+}
+
+.addButton {
+  background: none;
+  border: 1px dashed var(--accent-color);
+  border-radius: 30px;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--text);
+  font-weight: var(--subtitle-weight);
+}
+
+.addButton,
+.formActions button[type="submit"] {
+  min-width: 240px;        
+  padding: 10px 20px;      
+  box-sizing: border-box;   
+  text-align: center;       
+  white-space: nowrap;      
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}

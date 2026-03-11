@@ -1,0 +1,26 @@
+.header {
+  display: flex;           
+  align-items: center;     
+  justify-content: space-between; 
+  padding: 10px 20px;
+  border-bottom: 5px solid var(--accent-color);
+}
+
+.logo {
+  flex: 0 0 auto;         
+}
+
+.logo img {
+  height: 70px;            
+  width: auto;
+}
+
+.title {
+  font-size: var(--title-size);
+  font-weight: bold;
+  color: var(--bg-color);
+  position: absolute;      
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;     
+}

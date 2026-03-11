@@ -1,0 +1,60 @@
+.guestDashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.guestDashboard h2 {
+  font-size: var(--title-size);
+  font-weight: var(--subtitle-weight);
+  color: var(--bg-color); 
+  margin-bottom: 32px;          
+  text-align: center;
+}
+
+.guestButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;                   
+  width: 100%;
+  max-width: 300px;
+}
+
+.guestButtons button {
+  padding: 10px 24px;
+  border: 1px solid var(--neutral-color);
+  background-color: var(--neutral-color);
+  color: var(--bg-color);
+  font-size: var(--subtitle-size);
+  font-weight: var(--subtitle-weight);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  width: 100%;                  
+}
+
+.guestButtons button:hover {
+  background-color: var(--accent-color);
+  border-color: var(--border-color);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.guestButtons button:active {
+  background-color: var(--neutral-color);
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.guestButtons button.active {
+  background-color: var(--accent-color);
+  color: var(--neutral-color);
+}
+
+.guestButtons button.active:hover {
+  background-color: var(--accent-color);
+}
+
