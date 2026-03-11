@@ -1,4 +1,5 @@
 :root {
+    --max-size: 34px;
     --title-size: 28px;
     --subtitle-size: 24px;
     --text: 18px;
@@ -9,4 +10,5 @@
     --background-color: #ffb366;
     --accent-color: #279dd8;
     --fields: #ffe6cc;
+    --hint: #00FF00;
 }

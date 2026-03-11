@@ -1,0 +1,95 @@
+import React, { useState } from 'react';
+import './EmployeeDashboard.css';
+import Navigation from '../Navigation/Navigation';
+
+const EmployeeDashboard = ({ onLogout }) => {
+  const [phone, setPhone] = useState('');
+  const [pin, setPin] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+  const [pinError, setPinError] = useState('');
+
+  const validatePhone = (phone) => {
+    const digits = phone.replace(/\D/g, '');
+    if (digits.length < 10 || digits.length > 11) return false;
+    if (digits.length === 11) {
+      return digits[0] === '7' || digits[0] === '8';
+    }
+    return true;
+  };
+
+  const handlePhoneBlur = () => {
+    if (phone.trim() === '') {
+      setPhoneError('');
+      return;
+    }
+    setPhoneError(validatePhone(phone) ? '' : 'Некорректный номер телефона');
+  };
+
+  const handlePinChange = (e) => {
+    setPin(e.target.value);
+    setPinError('');
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!validatePhone(phone)) {
+      setPhoneError('Некорректный номер телефона');
+      return;
+    } else {
+      setPhoneError('');
+    }
+
+    if (pin !== '1') {
+      setPinError('Неверный пин, попробуйте еще раз');
+      return;
+    } else {
+      setPinError('');
+    }
+
+    console.log('Успешный вход! Телефон:', phone, 'PIN:', pin);
+    alert('Вход выполнен успешно!');
+  };
+
+  return (
+    <>
+      <Navigation onBack={onLogout} onForward={() => {}} />
+      <div className="employeeDashboard">
+        <h2 className="subtitle">Сотрудник</h2>
+        <form className="employeeForm" onSubmit={handleSubmit}>
+          {/* Поля формы */}
+          <div className="formGroups">
+            <input
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              onBlur={handlePhoneBlur}
+              placeholder="Номер телефона"
+              required
+              className="accentBorders"
+            />
+            {phoneError && <span className="error">{phoneError}</span>}
+          </div>
+          <div className="formGroups">
+            <input
+              type="password"
+              value={pin}
+              onChange={handlePinChange}
+              placeholder="Пин-код"
+              maxLength={4}
+              required
+              className="accentBorders"
+            />
+            {pinError && <span className="error">{pinError}</span>}
+          </div>
+
+          <div className="formActions">
+            <button type="submit">Войти</button>
+          </div>
+        </form>
+      </div>
+    </>
+  );
+};
+
+export default EmployeeDashboard;

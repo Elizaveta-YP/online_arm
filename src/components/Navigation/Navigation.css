@@ -11,13 +11,13 @@
 
 .navigationArrows button {
   pointer-events: auto;  
-  padding: 8px 16px;
-  background-color: var(--neutral-color);
+  padding: 16px 32px;
+  background-color: var(--accent-color);
   border: 1px solid var(--border-color);
   border-radius: 30px;   
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 14px;
+  font-size: var(--text);
   font-weight: var(--subtitle-weight);
   color: var(--bg-color);
   transition: all 0.2s ease-in-out;

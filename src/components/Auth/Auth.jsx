@@ -1,29 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Auth.css';
 
 const LoginForm = ({ onLogin }) => {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
-    };
-
-    // гость - вход
     const guest = () => {
         onLogin({ role: 'guest' });
     };
 
-    // сотрудник - вход
     const employee = () => {
-        if (!formData.email || !formData.password) {
-            alert('Введите email и пароль');
-            return;
-        }
-        onLogin({ ...formData, role: 'employee' });
+        onLogin({ role: 'employee' });
     };
 
     return (

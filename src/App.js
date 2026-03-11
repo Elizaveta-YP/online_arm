@@ -3,6 +3,7 @@ import './components/variables.css';
 import Auth from './components/Auth/Auth';
 import Header from './components/Header/Header';
 import GuestDashboard from './components/GuestDashboard/GuestDashboard';
+import EmployeeDashboard from './components/EmployeeDashboard/EmployeeDashboard'; // импорт
 import './App.css';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
   };
 
   const handleLogout = () => {
-    setUser(null); 
+    setUser(null);
   };
 
   return (
@@ -23,6 +24,8 @@ function App() {
       <header className="App-header">
         {user?.role === 'guest' ? (
           <GuestDashboard onLogout={handleLogout} />
+        ) : user?.role === 'employee' ? (
+          <EmployeeDashboard onLogout={handleLogout} />
         ) : (
           <Auth onLogin={handleLogin} />
         )}

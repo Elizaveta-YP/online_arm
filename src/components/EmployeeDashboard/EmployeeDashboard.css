@@ -1,0 +1,119 @@
+.employeeDashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.subtitle {
+  background-color: var(--accent-color);
+  font-size: var(--title-size);
+  font-weight: var(--subtitle-weight);
+  border-radius: 30px;
+  padding: 10px 24px;
+  display: inline-block;
+  margin-bottom: 32px;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+.employeeForm {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroups {
+  width: 100%;
+}
+
+.formGroups input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 30px;
+  background-color: var(--fields);
+  font-size: var(--text);
+  box-sizing: border-box;
+}
+
+.submitButton {
+  background-color: var(--neutral-color);
+  color: var(--bg-color);
+  font-size: var(--subtitle-size);
+  font-weight: bold;
+  padding: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.submitButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.submitButton {
+   background-color: var(--background-color);
+  color: var(--bg-color);
+  font-size: var(--subtitle-size);
+  font-weight: bold;
+  padding: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  margin-top: 20px; 
+}
+
+.employeeDashboard {
+  padding-bottom: 80px; 
+}
+
+.formActions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--background-color);
+  padding: 0;
+  box-sizing: border-box;
+  z-index: 100;
+  margin: 0;
+  display: block;
+}
+
+.formActions button[type="submit"] {
+  width: 100%;
+  border-radius: 0;
+  padding: 16px 0;
+  background-color: var(--background-color);
+  color: var(--bg-color);
+  font-size: var(--max-size);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.accentBorders {
+    margin: 20px;
+}
+
+.error {
+  color: #d32f2f;               
+  font-size: 20px;               
+  font-weight: 500;              
+  margin-top: 8px;
+  margin-inline-start: 42px;
+  max-width: 400px;       
+  border-radius: 8px;            
+  text-align: center;            
+}
