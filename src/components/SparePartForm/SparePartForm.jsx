@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './SparePartForm.css';
 import SuccessModal from '../SuccessModal/SuccessModal';
 import Add from '../../image/add.png';
+import Header from '../Header/Header';
 
 const RequestItem = ({ request, index, onUpdate, onRemove, onFileChange, onFileRemove }) => {
   const fileInputRef = useRef(null);
@@ -269,7 +270,7 @@ const SparePartForm = ({ onClose }) => {
 
       {showSuccess && (
         <SuccessModal
-          message="Заявка успешно отправлена!"
+          message="Заявка на запчасть успешно отправлена!"
           onClose={handleSuccessClose}
         />
       )}

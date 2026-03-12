@@ -1,0 +1,35 @@
+.buttonGrid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  gap: 32px;                
+}
+
+.controlButton {
+  background-color: var(--background-color);
+  font-size: var(--subtitle-size);
+  border-radius: 30px;
+  border: 1px solid var(--neutral-color);
+  padding: 24px;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.controlButton--button1 {
+  background-color: var(--color-button1); 
+  border-color: var(--color-button1);     
+ margin-block-start: 15px;
+}
+
+.controlButton--button2 {
+  background-color: var(--color-button2); 
+  border-color: var(--color-button2);
+}
+

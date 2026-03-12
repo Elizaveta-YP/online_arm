@@ -46,6 +46,7 @@
   z-index: 100;
   margin: 0;
   display: block;
+  font-weight: 800;
 }
 
 .formActions button {

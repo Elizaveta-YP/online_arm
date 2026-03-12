@@ -1,5 +1,6 @@
 import React from 'react';
 import './Auth.css';
+import Header from '../Header/Header';
 
 const LoginForm = ({ onLogin }) => {
     const guest = () => {
@@ -11,12 +12,15 @@ const LoginForm = ({ onLogin }) => {
     };
 
     return (
+        <>
+        <Header />
         <div className="role">
             <div className="buttonGroup">
                 <button onClick={guest}>Гость</button>
                 <button onClick={employee}>Сотрудник</button>
             </div>
         </div>
+        </>
     );
 };
 

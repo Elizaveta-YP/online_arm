@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import './EmployeeDashboard.css';
 import Navigation from '../Navigation/Navigation';
+import ControlPanel from '../ControlPanel/ControlPanel';
+import Header from '../Header/Header';
+import MyTasks from '../PopUp/MyTasks/MyTasks'; 
 
 const EmployeeDashboard = ({ onLogout }) => {
   const [phone, setPhone] = useState('');
   const [pin, setPin] = useState('');
   const [phoneError, setPhoneError] = useState('');
   const [pinError, setPinError] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentView, setCurrentView] = useState('controlPanel'); 
 
   const validatePhone = (phone) => {
     const digits = phone.replace(/\D/g, '');
@@ -47,17 +52,46 @@ const EmployeeDashboard = ({ onLogout }) => {
       setPinError('');
     }
 
-    console.log('Успешный вход! Телефон:', phone, 'PIN:', pin);
-    alert('Вход выполнен успешно!');
+    setIsAuthenticated(true);
   };
+
+  const handleMyTasksClick = () => {
+    setCurrentView('myTasks');
+  };
+
+  const handleBackToControlPanel = () => {
+    setCurrentView('controlPanel');
+  };
+
+if (isAuthenticated) {
+  return (
+    <>
+      {currentView === 'controlPanel' && (
+        <ControlPanel
+          onLogout={onLogout}
+          userPhone={phone}
+          onMyTasksClick={handleMyTasksClick}
+        />
+      )}
+      {currentView === 'myTasks' && (
+        <>
+          <button onClick={handleBackToControlPanel} className="backButton">
+            ← Назад
+          </button>
+          <MyTasks />
+        </>
+      )}
+    </>
+  );
+}
 
   return (
     <>
+      <Header />
       <Navigation onBack={onLogout} onForward={() => {}} />
       <div className="employeeDashboard">
         <h2 className="subtitle">Сотрудник</h2>
         <form className="employeeForm" onSubmit={handleSubmit}>
-          {/* Поля формы */}
           <div className="formGroups">
             <input
               type="tel"

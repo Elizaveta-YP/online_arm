@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './components/variables.css';
 import Auth from './components/Auth/Auth';
-import Header from './components/Header/Header';
 import GuestDashboard from './components/GuestDashboard/GuestDashboard';
-import EmployeeDashboard from './components/EmployeeDashboard/EmployeeDashboard'; // импорт
+import EmployeeDashboard from './components/EmployeeDashboard/EmployeeDashboard';
 import './App.css';
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       <header className="App-header">
         {user?.role === 'guest' ? (
           <GuestDashboard onLogout={handleLogout} />

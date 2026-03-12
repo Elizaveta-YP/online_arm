@@ -1,0 +1,83 @@
+.header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.header > div {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  justify-content: flex-start;
+}
+
+.header-center {
+  justify-content: center;
+}
+
+.header-user {
+  justify-content: flex-end;
+}
+
+.header-exit {
+  justify-content: center;
+}
+
+.centerButton {
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  width: 100%;              
+}
+
+.engineerButton {
+  background-color: var(--bg-role);
+  color: var(--color-text);
+  border: none;
+  border-radius: 30px;
+  padding: 16px 40px;       
+  font-size: 1.4rem;       
+  width: 100%;              
+  max-width: 300px;         
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.userDetails {
+  text-align: right;
+}
+
+.userDetails p {
+  margin: 0;
+  line-height: 1.2;
+  font-size: var(--subtitle-size);      
+}
+
+.userPhone {
+  font-size: var(--subtitle-size);
+  display: block;
+}
+
+.logoutIcon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  background-color: var(--neutral-color);
+  border-radius: 50%;
+  width: 80px;            
+  height: 80px;           
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoutIcon img {
+  width: 80px;           
+  height: 80px;           
+}

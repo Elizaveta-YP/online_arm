@@ -3,6 +3,7 @@ import './GuestDashboard.css';
 import Navigation from '../Navigation/Navigation';
 import SparePartForm from '../SparePartForm/SparePartForm';
 import RepairRequestForm from '../RepairRequestForm/RepairRequestForm';
+import Header from '../Header/Header';
 
 const SCREENS = {
   MENU: 'menu',
@@ -67,6 +68,7 @@ const GuestDashboard = ({ onLogout }) => {
 
   return (
     <>
+    <Header />
       <div>
         <Navigation onBack={goBack} onForward={goForward} />
       </div>
