@@ -249,12 +249,18 @@ const SparePartForm = ({ onClose }) => {
           />
         ))}
 
-        <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
-          <button className="addButton" type="button" onClick={addRequest}>
-            Здесь вы можете добавить ещё одну заявку на запчасть
-            <img src={Add} alt="Добавить" />
-          </button>
-        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 10px' }}>
+        <button className="addButton" type="button" onClick={addRequest}>
+          Здесь вы можете добавить ещё одну заявку на запчасть
+        </button>
+        <img 
+          src={Add} 
+          alt="Добавить" 
+          className="first-label-icon" 
+          onClick={addRequest}
+          style={{ cursor: 'pointer' }}
+        />
+      </div>
 
         <div className="formActions">
           <button type="submit">Отправить</button>

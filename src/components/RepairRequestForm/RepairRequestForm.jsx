@@ -260,7 +260,7 @@ const RepairRequestForm = ({ onClose }) => {
 
        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 10px' }}>
         <button className="addButton" type="button" onClick={addRequest}>
-          Здесь вы можете добавить ещё одну заявку на запчасть
+          Здесь вы можете добавить ещё одну заявку на ремонт оборудования
         </button>
         <img 
           src={Add} 
