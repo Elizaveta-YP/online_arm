@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import './SparePartForm.css';
 import SuccessModal from '../SuccessModal/SuccessModal';
 import Add from '../../image/add.png';
-import Header from '../Header/Header';
 
 const RequestItem = ({ request, index, onUpdate, onRemove, onFileChange, onFileRemove }) => {
   const fileInputRef = useRef(null);
@@ -251,9 +250,9 @@ const SparePartForm = ({ onClose }) => {
         ))}
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 10px' }}>
-        <button className="addButton" type="button" onClick={addRequest}>
+        <span className="addButton">
           Здесь вы можете добавить ещё одну заявку на запчасть
-        </button>
+        </span>
         <img 
           src={Add} 
           alt="Добавить" 

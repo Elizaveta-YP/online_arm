@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './TaskAssignment.css';
 import choice from '../../../image/choice.png';
 import choiceAfter from '../../../image/choiceAfter.png';
@@ -9,10 +9,20 @@ const TaskAssignment = ({ onBack }) => {
   const [tasks, setTasks] = useState([
     { selectedIndex: null, client: '', taskDescription: '' }
   ]);
+  const textareaRefs = useRef({});
 
   const handleAddTask = () => {
     setTasks([...tasks, { selectedIndex: null, client: '', taskDescription: '' }]);
   };
+  useEffect(() => {
+    initialTasks.forEach(task => {
+      const textarea = textareaRefs.current[task.id];
+      if (textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = `${textarea.scrollHeight}px`;
+      }
+    });
+  }, [details]); 
 
   const handleTaskSelect = (taskIndex, buttonIndex) => {
     const updatedTasks = [...tasks];
@@ -101,11 +111,17 @@ const TaskAssignment = ({ onBack }) => {
             </div>
             <div className="formGroups formGroupsTask">
               <textarea
+                ref={el => textareaRefs.current[task.id] = el} 
                 type="text"
                 maxLength={2000}
                 value={task.taskDescription}
                 onChange={(e) => handleTaskChange(taskIndex, 'taskDescription', e.target.value)}
+                onInput={(e) => { 
+                e.target.style.height = 'auto';
+                e.target.style.height = `${e.target.scrollHeight}px`;
+                }}
                 placeholder="Описание задачи"
+                rows={1}
                 required
                 className="accentBorders"
                 style={{ resize: 'none', overflow: 'hidden' }}

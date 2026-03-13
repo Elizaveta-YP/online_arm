@@ -22,7 +22,7 @@ const ControlPanel = ({ onLogout, userPhone }) => {
     { text: 'Поставить задачи', page: 'taskAssignment' },
     { text: 'Подать заявку на запчасть', page: 'sparePart' },
     { text: 'Подать заявку на выезд', page: 'departure' },
-    { text: 'Забор оборудования', page: 'equipment' },
+    { text: 'Транспортировка оборудования в ремонт', page: 'equipment' },
     { text: 'Отчет по платным выездам', page: 'paidReport' },
     { text: 'График', page: 'schedule', color: 'button2' },
     { text: 'Архив', page: 'archive', color: 'button2' }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './MyTasks.css';
 import yes from '../../../image/yes.png';
 import no from '../../../image/no.png';
@@ -21,10 +21,21 @@ const initialTasks = [
 
 const MyTasks = ({ onBack }) => {
   const [details, setDetails] = useState({});
+  const textareaRefs = useRef({});
 
   const handleDetailsChange = (id, value) => {
     setDetails(prev => ({ ...prev, [id]: value }));
   };
+
+  useEffect(() => {
+    initialTasks.forEach(task => {
+      const textarea = textareaRefs.current[task.id];
+      if (textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = `${textarea.scrollHeight}px`;
+      }
+    });
+  }, [details]); 
 
   const handleYes = (taskId) => {
     console.log(`Задача ${taskId} подтверждена`);
@@ -46,11 +57,18 @@ const MyTasks = ({ onBack }) => {
 
           <form>
             <textarea
+              ref={el => textareaRefs.current[task.id] = el} 
+              maxLength={2000}
               className="task accentBorders"
               value={details[task.id] || ''}
               onChange={(e) => handleDetailsChange(task.id, e.target.value)}
+              onInput={(e) => {
+                e.target.style.height = 'auto';
+                e.target.style.height = `${e.target.scrollHeight}px`;
+              }}
               placeholder="Дополнительные детали"
-              rows={4}
+              rows={1} 
+              style={{ resize: 'none', overflow: 'hidden' }}
             />
           </form>
 
