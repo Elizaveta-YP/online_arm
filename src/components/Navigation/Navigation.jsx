@@ -1,5 +1,4 @@
-import React from 'react';
-import './Navigation.css'; 
+import "./Navigation.css";
 
 const NavigationArrows = ({ onBack, onForward }) => {
   return (

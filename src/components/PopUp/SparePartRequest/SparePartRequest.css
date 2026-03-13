@@ -9,15 +9,15 @@
 .pageTitle {
   text-align: center;
   margin-bottom: 30px;
-  font-size: 2rem;
+  font-size: var(--max-size);
 }
 
 .formBlock {
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 20px;
-  background-color: #f9f9f9;
+  background-color: var(--neutral-color);
 }
 
 .formBlock h3 {
@@ -38,9 +38,9 @@
 
 .inputField {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: var(--text);
   width: 100%;
   box-sizing: border-box;
 }
@@ -51,50 +51,43 @@
   margin-top: 30px;
 }
 
-.backBtn, .submitBtn {
+.backBtn,
+.submitBtn {
   padding: 12px 24px;
   border: none;
   border-radius: 30px;
-  font-size: 1.2rem;
+  font-size: var(--text);
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .backBtn {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: var(--fields);
+  color: var(--bg-color);
 }
 
 .submitBtn {
-  background-color: #007bff;
-  color: white;
-}
-
-.backBtn:hover {
-  background-color: #ddd;
-}
-
-.submitBtn:hover {
-  background-color: #0056b3;
+  background-color: var(--color-button1);
+  color: var(--neutral-color);
 }
 
 .subtitleRequest {
-    background-color: var(--accent-color);
+  background-color: var(--accent-color);
   font-size: var(--title-size);
   font-weight: var(--subtitle-weight);
   border-radius: 30px;
   padding: 10px 24px;
-  display: block;        
-  width: fit-content;    
-  margin-left: auto;   
-  margin-right: auto; 
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 32px;
   text-align: center;
   box-sizing: border-box;
 }
 
 .sparePartRequest {
-  max-width: 500px;      
-  margin: 0 auto;       
-  padding-bottom: 80px;  
+  max-width: 500px;
+  margin: 0 auto;
+  padding-bottom: 80px;
 }

@@ -1,0 +1,57 @@
+.guestEntrance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.entranceForm {
+  width: 100%;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.accentBorder {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid var(--neutral-color);
+  border-radius: 30px;
+  font-size: var(--subtitle-size);
+  background-color: var(--fields);
+  box-sizing: border-box;
+  outline: none;
+}
+
+.formActions {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.formActions button {
+  width: 100%;
+  padding: 16px 0;
+  background-color: var(--accent-color);
+  color: var(--neutral-color);
+  border: none;
+  border-radius: 30px;
+  font-size: var(--text);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  color: var(--color-button1);
+  font-size: var(--text);
+  cursor: pointer;
+  margin-top: 20px;
+  text-decoration: underline;
+}

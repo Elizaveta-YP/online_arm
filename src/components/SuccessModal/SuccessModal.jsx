@@ -1,7 +1,6 @@
-import React from 'react';
-import './SuccessModal.css';
+import "./SuccessModal.css";
 
-const SuccessModal = ({ message = 'Успешно!', onClose }) => {
+const SuccessModal = ({ message = "Успешно!", onClose }) => {
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();

@@ -83,11 +83,13 @@ const TaskAssignment = ({ onBack }) => {
 
   return (
     <div className="page">
-      <h2 className="pageTitleTask">Поставить задачи</h2>
+      <h2 className="pageTitleTask pageTitleTasks">Поставить задачи</h2>
 
       {tasks.map((task, taskIndex) => (
         <div key={taskIndex} className="taskBlock">
-          <div className="addButton addButtonTask">Выберите ответственного</div>
+          <button className="addButton addButtonTask" type="button" onClick={handleAddTask}>
+          Выберите ответственного
+        </button>
 
           <div className="taskButtons">
             {buttons.map((text, btnIndex) => (

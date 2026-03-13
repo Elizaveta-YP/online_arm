@@ -1,16 +1,23 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './RepairRequestForm.css';
-import SuccessModal from '../SuccessModal/SuccessModal';
-import Add from '../../image/add.png';
+import React, { useState, useRef, useEffect } from "react";
+import "./RepairRequestForm.css";
+import SuccessModal from "../SuccessModal/SuccessModal";
+import Add from "../../image/add.png";
 
-const RepairRequestItem = ({ request, index, onUpdate, onRemove, onFileChange, onFileRemove }) => {
+const RepairRequestItem = ({
+  request,
+  index,
+  onUpdate,
+  onRemove,
+  onFileChange,
+  onFileRemove,
+}) => {
   const fileInputRef = useRef(null);
   const textareaRef = useRef(null);
-  const [phoneError, setPhoneError] = useState('');
+  const [phoneError, setPhoneError] = useState("");
 
   useEffect(() => {
     if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = "auto";
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
   }, [request.problemDescription]);
@@ -23,7 +30,7 @@ const RepairRequestItem = ({ request, index, onUpdate, onRemove, onFileChange, o
   const handleDescriptionChange = (e) => {
     const { name, value } = e.target;
     onUpdate(index, { [name]: value });
-    e.target.style.height = 'auto';
+    e.target.style.height = "auto";
     e.target.style.height = `${e.target.scrollHeight}px`;
   };
 
@@ -40,24 +47,39 @@ const RepairRequestItem = ({ request, index, onUpdate, onRemove, onFileChange, o
   };
 
   const validatePhone = (phone) => {
-    const digits = phone.replace(/\D/g, '');
+    const digits = phone.replace(/\D/g, "");
     return digits.length >= 10 && digits.length <= 11;
   };
 
   const handlePhoneBlur = (e) => {
     const phone = e.target.value;
-    if (!validatePhone(phone) && phone.trim() !== '') {
-      setPhoneError('Некорректный номер телефона');
+    if (!validatePhone(phone) && phone.trim() !== "") {
+      setPhoneError("Некорректный номер телефона");
     } else {
-      setPhoneError('');
+      setPhoneError("");
     }
   };
 
   return (
     <div className="requestItem">
-      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '10px' }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginBottom: "10px",
+        }}
+      >
         {index > 0 && (
-          <button type="button" onClick={() => onRemove(index)} style={{ background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer' }}>
+          <button
+            type="button"
+            onClick={() => onRemove(index)}
+            style={{
+              background: "none",
+              border: "none",
+              fontSize: "20px",
+              cursor: "pointer",
+            }}
+          >
             ✕
           </button>
         )}
@@ -118,7 +140,7 @@ const RepairRequestItem = ({ request, index, onUpdate, onRemove, onFileChange, o
           ref={textareaRef}
           placeholder="Опишите проблему"
           required
-          style={{ resize: 'none', overflow: 'hidden' }}
+          style={{ resize: "none", overflow: "hidden" }}
         />
         <span className="required-star">*</span>
       </div>
@@ -142,15 +164,22 @@ const RepairRequestItem = ({ request, index, onUpdate, onRemove, onFileChange, o
           onChange={handleFileChangeInternal}
           accept="image/*,video/*"
           multiple
-          style={{ display: 'none' }}
+          style={{ display: "none" }}
         />
         {request.files.length === 0 ? (
-          <button type="button" className="fileUploadButton" onClick={handleFileButtonClick}>
+          <button
+            type="button"
+            className="fileUploadButton"
+            onClick={handleFileButtonClick}
+          >
             Приложите фото или видео
             <img src={Add} alt="Добавить" />
           </button>
         ) : (
-          <div className="fileUploadButton fileListMode" onClick={handleFileButtonClick}>
+          <div
+            className="fileUploadButton fileListMode"
+            onClick={handleFileButtonClick}
+          >
             <div className="fileList">
               {request.files.map((file, fileIndex) => (
                 <div key={fileIndex} className="fileItem">
@@ -179,13 +208,13 @@ const RepairRequestForm = ({ onClose }) => {
   const [requests, setRequests] = useState([
     {
       id: Date.now(),
-      phone: '',
-      organization: '',
-      fullName: '',
-      problemDescription: '',
-      desiredDateTime: '', 
+      phone: "",
+      organization: "",
+      fullName: "",
+      problemDescription: "",
+      desiredDateTime: "",
       files: [],
-    }
+    },
   ]);
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -198,34 +227,46 @@ const RepairRequestForm = ({ onClose }) => {
         phone: lastRequest.phone,
         organization: lastRequest.organization,
         fullName: lastRequest.fullName,
-        problemDescription: '',
-        desiredDateTime: lastRequest.desiredDateTime, 
+        problemDescription: "",
+        desiredDateTime: lastRequest.desiredDateTime,
         files: [],
-      }
+      },
     ]);
   };
 
   const updateRequest = (index, updatedFields) => {
-    setRequests(prev => prev.map((req, i) => i === index ? { ...req, ...updatedFields } : req));
+    setRequests((prev) =>
+      prev.map((req, i) => (i === index ? { ...req, ...updatedFields } : req)),
+    );
   };
 
   const removeRequest = (index) => {
-    setRequests(prev => prev.filter((_, i) => i !== index));
+    setRequests((prev) => prev.filter((_, i) => i !== index));
   };
 
   const addFilesToRequest = (index, newFiles) => {
-    setRequests(prev => prev.map((req, i) => i === index ? { ...req, files: [...req.files, ...newFiles] } : req));
+    setRequests((prev) =>
+      prev.map((req, i) =>
+        i === index ? { ...req, files: [...req.files, ...newFiles] } : req,
+      ),
+    );
   };
 
   const removeFileFromRequest = (requestIndex, fileIndex) => {
-    setRequests(prev => prev.map((req, i) => i === requestIndex ? { ...req, files: req.files.filter((_, fIdx) => fIdx !== fileIndex) } : req));
+    setRequests((prev) =>
+      prev.map((req, i) =>
+        i === requestIndex
+          ? { ...req, files: req.files.filter((_, fIdx) => fIdx !== fileIndex) }
+          : req,
+      ),
+    );
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let hasErrors = false;
     requests.forEach((req, idx) => {
-      const digits = req.phone.replace(/\D/g, '');
+      const digits = req.phone.replace(/\D/g, "");
       if (digits.length < 10 || digits.length > 11) {
         alert(`Ошибка в заявке #${idx + 1}: неверный номер телефона`);
         hasErrors = true;
@@ -244,7 +285,11 @@ const RepairRequestForm = ({ onClose }) => {
   return (
     <div className="partRequestForm">
       <h2 className="subtitle">Подать заявку на ремонт оборудования</h2>
-      <div className="first-label">При введении номера телефона, названия организации и ФИО ответственного ваши данные сохранятся автоматически для последующего заполнения заявок. Обязательные для заполнения поля указаны под *</div>
+      <div className="first-label">
+        При введении номера телефона, названия организации и ФИО ответственного
+        ваши данные сохранятся автоматически для последующего заполнения заявок.
+        Обязательные для заполнения поля указаны под *
+      </div>
       <form onSubmit={handleSubmit}>
         {requests.map((request, index) => (
           <RepairRequestItem
@@ -258,18 +303,25 @@ const RepairRequestForm = ({ onClose }) => {
           />
         ))}
 
-       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 10px' }}>
-        <span className="addButton">
-          Здесь вы можете добавить ещё одну заявку на ремонт оборудования
-        </span>
-        <img 
-          src={Add} 
-          alt="Добавить" 
-          className="first-label-icon" 
-          onClick={addRequest}
-          style={{ cursor: 'pointer' }}
-        />
-      </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            margin: "20px 10px",
+          }}
+        >
+          <span className="addButton">
+            Здесь вы можете добавить ещё одну заявку на ремонт оборудования
+          </span>
+          <img
+            src={Add}
+            alt="Добавить"
+            className="first-label-icon"
+            onClick={addRequest}
+            style={{ cursor: "pointer" }}
+          />
+        </div>
 
         <div className="formActions">
           <button type="submit">Отправить</button>

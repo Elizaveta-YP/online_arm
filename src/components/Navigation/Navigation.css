@@ -1,33 +1,26 @@
 .navigationArrows {
-  position: fixed;       
+  position: fixed;
   left: 0;
   right: 0;
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;      
-  pointer-events: none; 
-  z-index: 1000;        
+  padding: 10px 20px;
+  pointer-events: none;
+  z-index: 1000;
 }
 
 .navigationArrows button {
-  pointer-events: auto;  
+  pointer-events: auto;
   padding: 16px 32px;
   background-color: var(--accent-color);
   border: 1px solid var(--border-color);
-  border-radius: 30px;   
+  border-radius: 30px;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-size: var(--text);
   font-weight: var(--subtitle-weight);
   color: var(--bg-color);
   transition: all 0.2s ease-in-out;
-}
-
-.navigationArrows button:hover {
-  background-color: var(--accent-color);
-  border-color: var(--border-color);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navigationArrows button:active {

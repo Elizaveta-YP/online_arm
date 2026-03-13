@@ -10,8 +10,8 @@
 .backButton {
   background: none;
   border: none;
-  color: #007bff;
-  font-size: 1.2rem;
+  color: var(--color-button1);
+  font-size: var(--text);
   cursor: pointer;
   margin-bottom: 20px;
   padding: 5px 10px;
@@ -19,19 +19,20 @@
 }
 
 .pageTitleTask {
-  background-color: var(--accent-color);
+    background-color: var(--accent-color);
   font-size: var(--subtitle-size);
   border-radius: 30px;
   border: 1px solid var(--neutral-color);
   padding: 24px;
   text-align: center;
-  width: 100%;
-  max-width: 500px;
+  max-width: 500px;        
+  margin-left: auto;
+  margin-right: auto;
   box-sizing: border-box;
   white-space: nowrap;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-bottom: 30px; 
+  margin-bottom: 30px
 }
 
 .taskButtons {
@@ -46,16 +47,16 @@
   align-items: center;
   gap: 12px;
   background-color: var(--all-role-color);
-  border: 1px solid var(--neutral-color, #ccc);
+  border: 1px solid var(--neutral-color);
   border-radius: 30px;
   padding: 16px 20px 16px 0;
-  font-size: 1.2rem;
+  font-size: var(--text);
   cursor: pointer;
   transition: background-color 0.2s;
   width: 100%;
   box-sizing: border-box;
   text-align: left;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .buttonIcon {
@@ -67,46 +68,46 @@
 }
 
 .engineersButtons {
-  background-color: var(--engineer-color, #FFFF99);
+  background-color: var(--engineer-color);
 }
 
 .iconWrapper {
   display: inline-flex;
-  border-radius: 50%;  
+  border-radius: 50%;
   transition: background-color 0.2s;
-  cursor: pointer;          
+  cursor: pointer;
 }
 
 .addButtonTask {
-    margin: 10px 100px;
+  margin: 10px auto;
 }
 
 .formGroups {
-    position: relative;
+  position: relative;
 }
 
 .formGroupsTask {
-    margin-block-end: 20px;
-      position: relative;
+  margin-block-end: 20px;
+  position: relative;
 }
 
 .addIconTask {
-    margin-inline-start: 200px;
-    width: 60px;
-    height: 60px;
+  margin-inline-start: 200px;
+  width: 60px;
+  height: 60px;
 }
 
 .addTaskControls {
-    margin-inline-start: 200px;
+  margin-inline-start: 200px;
 }
 
 .stars {
   position: absolute;
   right: 12px;
   top: 50%;
-  transform: translateY(calc(-50%)); 
+  transform: translateY(calc(-50%));
   color: red;
-  font-size: 1.2rem;
+  font-size: var(--text);
   pointer-events: none;
 }
 
@@ -114,20 +115,20 @@
   border: 1px solid var(--neutral-color);
   border-radius: 30px;
   padding: 12px 16px;
-  padding-right: 30px;       
+  padding-right: 30px;
   font-size: var(--text);
   background-color: var(--fields);
   outline: none;
   transition: border-color 0.2s;
-  width: 100%;              
+  width: 100%;
   box-sizing: border-box;
   resize: none;
   height: auto;
 }
 
 .autoExpand {
-  resize: none;        
-  overflow: hidden;   
-  min-height: 50px;   
-  transition: height 0.2s ease; 
+  resize: none;
+  overflow: hidden;
+  min-height: 50px;
+  transition: height 0.2s ease;
 }

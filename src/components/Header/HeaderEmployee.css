@@ -30,9 +30,9 @@
 
 .centerButton {
   display: flex;
-  justify-content: center;  
+  justify-content: center;
   align-items: center;
-  width: 100%;              
+  width: 100%;
 }
 
 .engineerButton {
@@ -40,10 +40,10 @@
   color: var(--color-text);
   border: none;
   border-radius: 30px;
-  padding: 16px 40px;       
-  font-size: 1.4rem;       
-  width: 100%;              
-  max-width: 300px;         
+  padding: 16px 40px;
+  font-size: var(--subtitle-size);
+  width: 100%;
+  max-width: 300px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -55,7 +55,7 @@
 .userDetails p {
   margin: 0;
   line-height: 1.2;
-  font-size: var(--subtitle-size);      
+  font-size: var(--subtitle-size);
 }
 
 .userPhone {
@@ -70,14 +70,14 @@
   padding: 0;
   background-color: var(--neutral-color);
   border-radius: 50%;
-  width: 80px;            
-  height: 80px;           
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .logoutIcon img {
-  width: 80px;           
-  height: 80px;           
+  width: 80px;
+  height: 80px;
 }

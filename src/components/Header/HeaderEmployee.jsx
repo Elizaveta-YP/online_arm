@@ -1,7 +1,6 @@
-import React from 'react';
-import './HeaderEmployee.css';
-import logo from '../../image/logo.png';
-import exit from '../../image/exit.png';
+import "./HeaderEmployee.css";
+import logo from "../../image/logo.png";
+import exit from "../../image/exit.png";
 
 const HeaderEmployee = ({ userPhone, fullName, onLogout }) => {
   return (

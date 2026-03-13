@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
-import './GuestDashboard.css';
-import Navigation from '../Navigation/Navigation';
-import SparePartForm from '../SparePartForm/SparePartForm';
-import RepairRequestForm from '../RepairRequestForm/RepairRequestForm';
-import Header from '../Header/Header';
+import React, { useState } from "react";
+import "./GuestDashboard.css";
+import Navigation from "../Navigation/Navigation";
+import SparePartForm from "../SparePartForm/SparePartForm";
+import RepairRequestForm from "../RepairRequestForm/RepairRequestForm";
+import Agreement from "../Agreement/Agreement";
+import GuestEntrance from "../GuestEntrance/GuestEntrance";
+import GuestRegistration from "../GuestRegistration/GuestRegistration";
+import Header from "../Header/Header";
 
 const SCREENS = {
-  MENU: 'menu',
-  PART_FORM: 'partForm',
-  REPAIR_FORM: 'repairForm',
+  MENU: "menu",
+  PART_FORM: "partForm",
+  REPAIR_FORM: "repairForm",
+  AGREEMENT: "agreement",
+  GUEST_ENTRANCE: "guestEntrance",
+  GUEST_REGISTRATION: "guestRegistration",
 };
 
 const GuestDashboard = ({ onLogout }) => {
@@ -38,6 +44,9 @@ const GuestDashboard = ({ onLogout }) => {
 
   const handlePartRequest = () => navigateTo(SCREENS.PART_FORM);
   const handleRepairRequest = () => navigateTo(SCREENS.REPAIR_FORM);
+  const handleAgreement = () => navigateTo(SCREENS.AGREEMENT);
+  const handleGuestEntrance = () => navigateTo(SCREENS.GUEST_ENTRANCE);
+  const handleGuestRegistration = () => navigateTo(SCREENS.GUEST_REGISTRATION);
 
   const handleCloseForm = () => {
     const currentScreen = history[currentIndex].type;
@@ -53,13 +62,30 @@ const GuestDashboard = ({ onLogout }) => {
         return <SparePartForm onClose={handleCloseForm} />;
       case SCREENS.REPAIR_FORM:
         return <RepairRequestForm onClose={handleCloseForm} />;
+      case SCREENS.AGREEMENT:
+        return (
+          <Agreement
+            onClose={handleCloseForm}
+            onLogin={handleGuestEntrance}
+            onRegister={handleGuestRegistration}
+          />
+        );
+      case SCREENS.GUEST_ENTRANCE:
+        return <GuestEntrance onClose={handleCloseForm} />;
+      case SCREENS.GUEST_REGISTRATION:
+        return <GuestRegistration onClose={handleCloseForm} />;
       default:
         return (
           <>
             <h2 className="subtitle">Гость</h2>
             <div className="guestButtons">
-              <button onClick={handlePartRequest}>Подать заявку на запчасть</button>
-              <button onClick={handleRepairRequest}>Подать заявку на ремонт оборудования</button>
+              <button onClick={handlePartRequest}>
+                Подать заявку на запчасть
+              </button>
+              <button onClick={handleRepairRequest}>
+                Подать заявку на ремонт оборудования
+              </button>
+              <button onClick={handleAgreement}>Согласование</button>
             </div>
           </>
         );
@@ -68,13 +94,11 @@ const GuestDashboard = ({ onLogout }) => {
 
   return (
     <>
-    <Header />
+      <Header />
       <div>
         <Navigation onBack={goBack} onForward={goForward} />
       </div>
-      <div className="guestDashboard">
-        {renderScreen()}
-      </div>
+      <div className="guestDashboard">{renderScreen()}</div>
     </>
   );
 };

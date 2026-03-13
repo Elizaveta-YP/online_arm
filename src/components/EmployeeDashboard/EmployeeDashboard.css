@@ -59,7 +59,7 @@
 }
 
 .submitButton {
-   background-color: var(--background-color);
+  background-color: var(--background-color);
   color: var(--bg-color);
   font-size: var(--subtitle-size);
   font-weight: bold;
@@ -69,11 +69,11 @@
   cursor: pointer;
   transition: all 0.2s ease;
   width: 100%;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
 .employeeDashboard {
-  padding-bottom: 80px; 
+  padding-bottom: 80px;
 }
 
 .formActions {
@@ -103,12 +103,12 @@
 }
 
 .error {
-  color: #d32f2f;               
-  font-size: 20px;               
-  font-weight: 500;              
+  color: #d32f2f;
+  font-size: var(--text);
+  font-weight: 500;
   margin-top: 8px;
   margin-inline-start: 42px;
-  max-width: 400px;       
-  border-radius: 8px;            
-  text-align: center;            
+  max-width: 400px;
+  border-radius: 8px;
+  text-align: center;
 }
