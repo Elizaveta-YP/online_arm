@@ -230,7 +230,7 @@ const EquipmentCollection = ({ onClose = () => {} }) => {
 
   return (
     <div className="partRequestForm">
-      <h2 className="subtitle">Транспортировка оборудования в ремонт</h2>
+      <h2 className="subtitle">Забор оборудования в ремонт</h2>
       <form onSubmit={handleSubmit}>
         {requests.map((request, index) => (
           <EquipmentItem
@@ -246,7 +246,7 @@ const EquipmentCollection = ({ onClose = () => {} }) => {
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '20px 10px' }}>
           <span className="addButton">
-            Здесь вы можете указать еще одно оборудование для транспортировки
+            Здесь вы можете указать еще одно оборудование 
           </span>
           <img
             src={Add}
@@ -264,7 +264,7 @@ const EquipmentCollection = ({ onClose = () => {} }) => {
 
       {showSuccess && (
         <SuccessModal
-          message="Заявка на транспортировку оборудования в ремонт успешно отправлена!"
+          message="Заявка на забор оборудования в ремонт успешно отправлена!"
           onClose={handleSuccessClose}
         />
       )}

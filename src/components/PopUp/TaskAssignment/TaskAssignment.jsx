@@ -9,20 +9,21 @@ const TaskAssignment = ({ onBack }) => {
   const [tasks, setTasks] = useState([
     { selectedIndex: null, client: '', taskDescription: '' }
   ]);
-  const textareaRefs = useRef({});
+  const textareaRefs = useRef([]);
 
   const handleAddTask = () => {
     setTasks([...tasks, { selectedIndex: null, client: '', taskDescription: '' }]);
   };
-  useEffect(() => {
-    initialTasks.forEach(task => {
-      const textarea = textareaRefs.current[task.id];
+
+    useEffect(() => {
+    tasks.forEach((_, index) => {
+      const textarea = textareaRefs.current[index];
       if (textarea) {
         textarea.style.height = 'auto';
         textarea.style.height = `${textarea.scrollHeight}px`;
       }
     });
-  }, [details]); 
+  }, [tasks]);
 
   const handleTaskSelect = (taskIndex, buttonIndex) => {
     const updatedTasks = [...tasks];
@@ -35,6 +36,16 @@ const TaskAssignment = ({ onBack }) => {
     const updatedTasks = [...tasks];
     updatedTasks[taskIndex][field] = value;
     setTasks(updatedTasks);
+  };
+
+  const handleDescriptionChange = (taskIndex, e) => {
+    const { value } = e.target;
+    handleTaskChange(taskIndex, 'taskDescription', value);
+    const textarea = textareaRefs.current[taskIndex];
+    if (textarea) {
+      textarea.style.height = 'auto';
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
   };
 
  const handleSubmit = (e) => {

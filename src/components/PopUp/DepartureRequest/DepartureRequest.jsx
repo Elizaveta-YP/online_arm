@@ -173,7 +173,7 @@ const DepartureItem = ({ request, index, onUpdate, onRemove, onFileChange, onFil
   );
 };
 
-const DepartureRequest = ({ onClose = () => {} }) => {
+const DepartureRequest = ({ onBack = () => {} }) => {
   const [requests, setRequests] = useState([
     {
       id: Date.now(),
@@ -236,7 +236,7 @@ const DepartureRequest = ({ onClose = () => {} }) => {
 
   const handleSuccessClose = () => {
     setShowSuccess(false);
-    onClose();
+    onBack();
   };
 
   return (

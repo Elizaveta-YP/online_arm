@@ -8,8 +8,8 @@ import SparePartRequest from '../PopUp/SparePartRequest/SparePartRequest';
 import DepartureRequest from '../PopUp/DepartureRequest/DepartureRequest';
 import EquipmentCollection from '../PopUp/EquipmentCollection/EquipmentCollection';
 import PaidDeparturesReport from '../PopUp/PaidDeparturesReport/PaidDeparturesReport';
-import Schedule from '../PopUp/Schedule/Schedule';
-import Archive from '../PopUp/Archive/Archive';
+// import Schedule from '../PopUp/Schedule/Schedule';
+// import Archive from '../PopUp/Archive/Archive';
 
 const ControlPanel = ({ onLogout, userPhone }) => {
   const [currentPage, setCurrentPage] = useState('main');
@@ -22,7 +22,7 @@ const ControlPanel = ({ onLogout, userPhone }) => {
     { text: 'Поставить задачи', page: 'taskAssignment' },
     { text: 'Подать заявку на запчасть', page: 'sparePart' },
     { text: 'Подать заявку на выезд', page: 'departure' },
-    { text: 'Транспортировка оборудования в ремонт', page: 'equipment' },
+    { text: 'Забор оборудования в ремонт', page: 'equipment' },
     { text: 'Отчет по платным выездам', page: 'paidReport' },
     { text: 'График', page: 'schedule', color: 'button2' },
     { text: 'Архив', page: 'archive', color: 'button2' }
@@ -42,10 +42,10 @@ const ControlPanel = ({ onLogout, userPhone }) => {
         return <EquipmentCollection onBack={goBack} />;
       case 'paidReport':
         return <PaidDeparturesReport onBack={goBack} />;
-      case 'schedule':
-        return <Schedule onBack={goBack} />;
-      case 'archive':
-        return <Archive onBack={goBack} />;
+      // case 'schedule':
+      //   return <Schedule onBack={goBack} />;
+      // case 'archive':
+      //   return <Archive onBack={goBack} />;
       default:
         return (
           <div className="buttonGrid">

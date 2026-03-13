@@ -5,19 +5,45 @@ import Add from '../../../image/add.png';
 
 const RequestItem = ({ request, index, onUpdate, onRemove, onFileChange, onFileRemove }) => {
   const fileInputRef = useRef(null);
-  const textareaRef = useRef(null);
+  const descriptionRef = useRef(null); 
+  const commentRef = useRef(null);
   const [phoneError, setPhoneError] = useState('');
 
-  useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+useEffect(() => {
+    if (descriptionRef.current) {
+      descriptionRef.current.style.height = 'auto';
+      descriptionRef.current.style.height = `${descriptionRef.current.scrollHeight}px`;
     }
   }, [request.description]);
+
+  useEffect(() => {
+    if (commentRef.current) {
+      commentRef.current.style.height = 'auto';
+      commentRef.current.style.height = `${commentRef.current.scrollHeight}px`;
+    }
+  }, [request.comment]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     onUpdate(index, { [name]: value });
+  };
+
+    const handleDescriptionChange = (e) => {
+    handleChange(e);
+    const textarea = descriptionRef.current;
+    if (textarea) {
+      textarea.style.height = 'auto';
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+  };
+
+   const handleCommentChange = (e) => {
+    handleChange(e);
+    const textarea = commentRef.current;
+    if (textarea) {
+      textarea.style.height = 'auto';
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
   };
 
   const handleFileButtonClick = () => {
@@ -99,15 +125,18 @@ const RequestItem = ({ request, index, onUpdate, onRemove, onFileChange, onFileR
       </div>
 
       <div className="formGroup">
-        <input
+        <textarea
+          maxLength={2000}
+          ref={descriptionRef}
           className="accentBorder"
-          type="text"
-          id={`fullName-${index}`}
-          name="fullName"
-          value={request.fullName}
-          onChange={handleChange}
+          id={`description-${index}`}
+          name="description"
+          value={request.description}
+          onChange={handleDescriptionChange}
           placeholder="Опишите запчасть, обязательно укажите количество"
+          rows={1}
           required
+          style={{ resize: 'none', overflow: 'hidden' }}
         />
         <span className="required-star">*</span>
       </div>
@@ -155,22 +184,25 @@ const RequestItem = ({ request, index, onUpdate, onRemove, onFileChange, onFileR
           </div>
         )}
       </div>
-       <div className="formGroup">
-        <input
+        <div className="formGroup">
+        <textarea
+          maxLength={2000}
+          ref={commentRef}
           className="accentBorder"
-          type="text"
           id={`comment-${index}`}
           name="comment"
           value={request.comment || ''}
-          onChange={handleChange}
+          onChange={handleCommentChange}
           placeholder="Добавить комментарий и/или обоснование замены:"
+          rows={1}
+          style={{ resize: 'none', overflow: 'hidden' }}
         />
       </div>
     </div>
   );
 };
 
-const SparePartRequest = ({ onClose }) => {
+const SparePartRequest = ({ onBack }) => {
   const [requests, setRequests] = useState([
     {
       id: Date.now(),
@@ -178,13 +210,14 @@ const SparePartRequest = ({ onClose }) => {
       organization: '',
       fullName: '',
       description: '',
+      comment: '',
       files: [],
     }
     
   ]);
    const handleSuccessClose = () => {
     setShowSuccess(false);
-    onClose(); 
+    onBack(); 
   };
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -198,6 +231,7 @@ const SparePartRequest = ({ onClose }) => {
         organization: lastRequest.organization,
         fullName: lastRequest.fullName,
         description: '',
+        comment: lastRequest.comment,
         files: [],
       }
     ]);
