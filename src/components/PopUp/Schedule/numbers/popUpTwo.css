@@ -48,7 +48,6 @@ button {
   margin-top: 20px;
   padding: 10px 20px;
   background-color: var(--accent-color);
-  color: var(--neutral-color);
   border: none;
   border-radius: 4px;
   cursor: pointer;

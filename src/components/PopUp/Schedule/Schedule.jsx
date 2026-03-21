@@ -1,157 +1,104 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Schedule.css";
-import no from "../../../image/no.png";
-import yes from "../../../image/yes.png";
-import editIcon from "../../../image/editIcon.png";
+import popUpOne from "./numbers/popUpOne";
+import popUpTwo from "./numbers/popUpTwo";
+import popUpThree from "./numbers/popUpThree";
 
-const Schedule = ({ onBack }) => {
-  const initialData = {
-    employee: "Иванов Иван Иванович",
-    time: "11:00 - 12:00",
-    client: "Пушкина 1",
-    task: "Ремонт оборудования",
-    additionalWorks: "",
-    images: [],
-  };
+// Простой попап для кнопок 2–10
+const PopupSimple = ({ title, content, onClose }) => (
+  <div className="modal-overlay" onClick={onClose}>
+    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <button className="modal-close" onClick={onClose}>
+        &times;
+      </button>
+      <h3>{title}</h3>
+      <p>{content}</p>
+    </div>
+  </div>
+);
 
-  const [data, setData] = useState(initialData);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editData, setEditData] = useState({ ...initialData });
-  const textareaRef = useRef(null);
+const Schedule = () => {
+  const [activePopup, setActivePopup] = useState(null);
 
+  const openPopup = (id) => setActivePopup(id);
+  const closePopup = () => setActivePopup(null);
+
+  // Закрытие по Escape
   useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-    }
-  }, [data.additionalWorks]);
+    const handleEsc = (e) => {
+      if (e.key === "Escape" && activePopup !== null) closePopup();
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [activePopup]);
 
-  const handleEditClick = () => {
-    setEditData({ ...data });
-    setIsEditing(true);
-  };
-
-  const handleCancel = () => {
-    setIsEditing(false);
-  };
-
-  const handleSave = () => {
-    setData({ ...editData });
-    setIsEditing(false);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    if (name === "additionalWorks") {
-      setData((prev) => ({ ...prev, [name]: value }));
-    } else if (isEditing) {
-      setEditData((prev) => ({ ...prev, [name]: value }));
+  const renderPopup = () => {
+    switch (activePopup) {
+      case 1:
+        // Для первой кнопки – ваш компонент popUpOne
+        return (
+          <div className="modal-overlay" onClick={closePopup}>
+            <div className="popup-one-wrapper" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close" onClick={closePopup}>
+                &times;
+              </button>
+              {React.createElement(popUpOne, { onBack: closePopup })}
+            </div>
+          </div>
+        );
+         case 2:
+        // Для второй кнопки – компонент popUpTwo
+        return (
+          <div className="modal-overlay" onClick={closePopup}>
+            <div className="popup-wrapper" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close" onClick={closePopup}>
+                &times;
+              </button>
+              {React.createElement(popUpTwo, { onBack: closePopup })}
+            </div>
+          </div>
+        );
+      case 3:
+          return (
+          <div className="modal-overlay" onClick={closePopup}>
+            <div className="popup-wrapper" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close" onClick={closePopup}>
+                &times;
+              </button>
+              {React.createElement(popUpThree, { onBack: closePopup })}
+            </div>
+          </div>
+        );
+      case 4:
+        return <PopupSimple title="Попап 4" content="Содержимое четвёртого попапа." onClose={closePopup} />;
+      case 5:
+        return <PopupSimple title="Попап 5" content="Содержимое пятого попапа." onClose={closePopup} />;
+      case 6:
+        return <PopupSimple title="Попап 6" content="Содержимое шестого попапа." onClose={closePopup} />;
+      case 7:
+        return <PopupSimple title="Попап 7" content="Содержимое седьмого попапа." onClose={closePopup} />;
+      case 8:
+        return <PopupSimple title="Попап 8" content="Содержимое восьмого попапа." onClose={closePopup} />;
+      case 9:
+        return <PopupSimple title="Попап 9" content="Содержимое девятого попапа." onClose={closePopup} />;
+      case 10:
+        return <PopupSimple title="Попап 10" content="Содержимое десятого попапа." onClose={closePopup} />;
+      default:
+        return null;
     }
   };
 
   return (
-    <div className="schedule">
-      <div className="scheduleInfo">
-        {isEditing ? (
-          <>
-            <div className="field">
-              <label>Сотрудник:</label>
-              <input
-                type="text"
-                name="employee"
-                value={editData.employee}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="field">
-              <label>Время:</label>
-              <input
-                type="text"
-                name="time"
-                value={editData.time}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="field">
-              <label>Клиент:</label>
-              <input
-                type="text"
-                name="client"
-                value={editData.client}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="field">
-              <label>Задача:</label>
-              <input
-                type="text"
-                name="task"
-                value={editData.task}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="field">
-              <textarea
-                maxLength={2000}
-                id="additionalWorks"
-                className="accentBorder accentBorderFile"
-                name="additionalWorks"
-                rows="4"
-                value={data.additionalWorks}
-                onChange={handleChange}
-                ref={textareaRef}
-                placeholder="Дополнительно выполненные работы"
-                style={{ resize: "none", overflow: "hidden" }}
-              />
-            </div>
-            <div className="buttons">
-              <button className="saveButton" onClick={handleSave}>
-                Сохранить
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <p>
-              <strong>Сотрудник:</strong> {data.employee}
-            </p>
-            <p>
-              <strong>Время:</strong> {data.time}
-            </p>
-            <p>
-              <strong>Клиент:</strong> {data.client}
-            </p>
-            <p>
-              <strong>Задача:</strong> {data.task}
-            </p>
-            <div className="field">
-              <textarea
-                maxLength={2000}
-                id="additionalWorks"
-                className="accentBorder accentBorderFile"
-                name="additionalWorks"
-                rows="4"
-                value={data.additionalWorks}
-                onChange={handleChange}
-                ref={textareaRef}
-                placeholder="Дополнительно выполненные работы"
-                style={{ resize: "none", overflow: "hidden" }}
-              />
-            </div>
-          </>
-        )}
-
-        <div className="images">
-          <img src={no} alt="Нет" />
-          <img src={yes} alt="Да" />
-        </div>
-        <div className="images">
-          <img src={no} alt="Нет" />
-          <img src={editIcon} alt="Редактировать" onClick={handleEditClick} />
-        </div>
+    <div className="schedule-container">
+      <h2>Расписание (Schedule)</h2>
+      <div className="buttons-grid">
+        {Array.from({ length: 10 }, (_, i) => i + 1).map((id) => (
+          <button key={id} className="schedule-button" onClick={() => openPopup(id)}>
+            Кнопка {id}
+          </button>
+        ))}
       </div>
+      {activePopup !== null && renderPopup()}
     </div>
   );
 };

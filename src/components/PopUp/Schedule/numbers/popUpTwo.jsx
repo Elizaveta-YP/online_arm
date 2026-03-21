@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import no from "../../../../image/no.png";
-import yes from "../../../../image/yes.png";
+import editIcon from "../../../../image/editIcon.png";
+import "./popUpTwo.css";
 
-const PopUpOne = ({ onBack }) => {
+const PopUpTwo = ({ onBack }) => {
   const initialData = {
-    employee: "Иванов Иван Иванович",
-    time: "11:00 - 12:00",
-    client: "Пушкина 1",
-    task: "Ремонт оборудования",
+    employee: "Сотрудник",
+    time: "Время",
+    client: "Клиент",
+    task: "Задача",
     additionalWorks: "",
     images: [],
   };
@@ -52,18 +53,39 @@ const PopUpOne = ({ onBack }) => {
     <div className="schedule">
       <div className="scheduleInfo">
         <>
-          <p>
-            <strong>Сотрудник:</strong> {data.employee}
-          </p>
-          <p>
-            <strong>Время:</strong> {data.time}
-          </p>
-          <p>
-            <strong>Клиент:</strong> {data.client}
-          </p>
-          <p>
-            <strong>Задача:</strong> {data.task}
-          </p>
+          <div className="field">
+            <input
+              type="text"
+              name="employee"
+              value={editData.employee}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="field">
+            <input
+              type="text"
+              name="time"
+              value={editData.time}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="field">
+            <input
+              type="text"
+              name="client"
+              value={editData.client}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="field">
+            <input
+              type="text"
+              name="task"
+              value={editData.task}
+              onChange={handleChange}
+            />
+          </div>
+
           <div className="field">
             <textarea
               maxLength={2000}
@@ -78,15 +100,20 @@ const PopUpOne = ({ onBack }) => {
               style={{ resize: "none", overflow: "hidden" }}
             />
           </div>
+          <div className="buttons">
+            <button className="saveButton" onClick={handleSave}>
+              Сохранить
+            </button>
+          </div>
         </>
 
         <div className="images">
           <img src={no} alt="Нет" />
-          <img src={yes} alt="Да" />
+          <img src={editIcon} alt="Редактировать" onClick={handleEditClick} />
         </div>
       </div>
     </div>
   );
 };
 
-export default PopUpOne;
+export default PopUpTwo;
