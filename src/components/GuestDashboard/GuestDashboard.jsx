@@ -6,6 +6,7 @@ import RepairRequestForm from "../RepairRequestForm/RepairRequestForm";
 import Agreement from "../Agreement/Agreement";
 import GuestEntrance from "../GuestEntrance/GuestEntrance";
 import GuestRegistration from "../GuestRegistration/GuestRegistration";
+import ScheduleApproval from "../ScheduleApproval/ScheduleApproval";
 import Header from "../Header/Header";
 
 const SCREENS = {
@@ -15,11 +16,14 @@ const SCREENS = {
   AGREEMENT: "agreement",
   GUEST_ENTRANCE: "guestEntrance",
   GUEST_REGISTRATION: "guestRegistration",
+  SCHEDULE_APPROVAL: "scheduleApproval",
 };
 
 const GuestDashboard = ({ onLogout }) => {
   const [history, setHistory] = useState([{ type: SCREENS.MENU }]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [userPhone, setUserPhone] = useState("");
+  const [userInnKpp, setUserInnKpp] = useState("");
 
   const navigateTo = (screenType) => {
     const newHistory = history.slice(0, currentIndex + 1);
@@ -48,6 +52,12 @@ const GuestDashboard = ({ onLogout }) => {
   const handleGuestEntrance = () => navigateTo(SCREENS.GUEST_ENTRANCE);
   const handleGuestRegistration = () => navigateTo(SCREENS.GUEST_REGISTRATION);
 
+  const handleScheduleApproval = (innKpp, phone) => {
+    setUserInnKpp(innKpp);
+    setUserPhone(phone);
+    navigateTo(SCREENS.SCHEDULE_APPROVAL);
+  };
+
   const handleCloseForm = () => {
     const currentScreen = history[currentIndex].type;
     if (currentScreen !== SCREENS.MENU) {
@@ -71,9 +81,24 @@ const GuestDashboard = ({ onLogout }) => {
           />
         );
       case SCREENS.GUEST_ENTRANCE:
-        return <GuestEntrance onClose={handleCloseForm} />;
+        return (
+          <GuestEntrance
+            onClose={handleCloseForm}
+            onSuccess={handleScheduleApproval}
+          />
+        );
       case SCREENS.GUEST_REGISTRATION:
         return <GuestRegistration onClose={handleCloseForm} />;
+      case SCREENS.SCHEDULE_APPROVAL:
+        return (
+          <ScheduleApproval
+            onClose={handleCloseForm}
+            phone={userPhone}
+            innKpp={userInnKpp}
+            onSparePart={handlePartRequest}
+            onRepair={handleRepairRequest}
+          />
+        );
       default:
         return (
           <>
@@ -94,10 +119,13 @@ const GuestDashboard = ({ onLogout }) => {
 
   return (
     <>
-      <Header />
-      <div>
-        <Navigation onBack={goBack} onForward={goForward} />
-      </div>
+      {history[currentIndex].type !== SCREENS.SCHEDULE_APPROVAL && <Header />}
+
+      {history[currentIndex].type !== SCREENS.SCHEDULE_APPROVAL && (
+        <div>
+          <Navigation onBack={goBack} onForward={goForward} />
+        </div>
+      )}
       <div className="guestDashboard">{renderScreen()}</div>
     </>
   );

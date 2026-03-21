@@ -8,10 +8,10 @@ import SparePartRequest from "../PopUp/SparePartRequest/SparePartRequest";
 import DepartureRequest from "../PopUp/DepartureRequest/DepartureRequest";
 import EquipmentCollection from "../PopUp/EquipmentCollection/EquipmentCollection";
 import PaidDeparturesReport from "../PopUp/PaidDeparturesReport/PaidDeparturesReport";
-// import Schedule from '../PopUp/Schedule/Schedule';
+import Schedule from '../PopUp/Schedule/Schedule';
 // import Archive from '../PopUp/Archive/Archive'; ДОБАВИМ НЕМНОГО ПОЗЖЕ
 
-const ControlPanel = ({ onLogout, userPhone }) => {
+const ControlPanel = ({ onLogout, userPhone, userInnKpp }) => {
   const [currentPage, setCurrentPage] = useState("main");
 
   const navigateTo = (page) => setCurrentPage(page);
@@ -42,8 +42,8 @@ const ControlPanel = ({ onLogout, userPhone }) => {
         return <EquipmentCollection onBack={goBack} />;
       case "paidReport":
         return <PaidDeparturesReport onBack={goBack} />;
-      // case 'schedule':
-      //   return <Schedule onBack={goBack} />;
+      case 'schedule':
+        return <Schedule onBack={goBack} />;
       // case 'archive':
       //   return <Archive onBack={goBack} />;  ДОБАВИМ НЕМНОГО ПОЗЖЕ
       default:

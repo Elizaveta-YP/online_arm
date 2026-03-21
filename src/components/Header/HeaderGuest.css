@@ -1,0 +1,75 @@
+ .headerGuest {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  background-color: var(--neutral-color);
+  border-bottom: 4px solid var(--accent-color);
+}
+
+.headerGuest-logo {
+  flex: 0 0 auto;
+  margin-right: 20px;
+}
+.headerGuest-logo img {
+  width: 150px;
+  height: 100px;
+}
+
+.headerGuest-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.centerButtons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.guestButton {
+  background-color: var(--background-color);
+  border: none;
+  border-radius: 30px;
+  padding: 16px 40px;
+  font-size: var(--subtitle-size);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.headerGuest-user {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.userDetails {
+  display: flex;
+  gap: 15px;
+  align-items: baseline;
+  text-align: right;
+}
+.userInn,
+.userPhone {
+  white-space: nowrap;
+}
+.userInn {
+  font-size: var(--subtitle-size);
+  font-weight: bold;
+}
+.userPhone {
+  font-size: var(--subtitle-size);
+  color: var(--border-color);
+}
+
+.headerGuest-profile img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-color: var(--neutral-color);
+  object-fit: cover;
+}
+

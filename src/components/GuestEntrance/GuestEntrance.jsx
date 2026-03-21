@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./GuestEntrance.css";
 
-const GuestEntrance = ({ onClose }) => {
+const GuestEntrance = ({ onClose, onSuccess }) => {
   const [innKpp, setInnKpp] = useState("");
   const [phone, setPhone] = useState("");
   const [pin, setPin] = useState("");
@@ -29,7 +29,9 @@ const GuestEntrance = ({ onClose }) => {
       return;
     }
 
-    alert("Вход выполнен");
+    if (onSuccess) {
+      onSuccess(innKpp, phone);
+    }
   };
 
   return (

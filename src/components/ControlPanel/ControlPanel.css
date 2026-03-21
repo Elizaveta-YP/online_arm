@@ -4,7 +4,6 @@
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-  gap: 32px;                
 }
 
 .controlButton {
@@ -20,15 +19,16 @@
   white-space: nowrap;
   cursor: pointer;
   transition: background-color 0.2s;
+  color: black;
 }
 
 .controlButton--button1 {
-  background-color: var(--color-button1); 
-  border-color: var(--color-button1);     
- margin-block-start: 15px;
+  background-color: var(--color-button1);
+  border-color: var(--color-button1);
+  margin-block-start: 15px;
 }
 
 .controlButton--button2 {
-  background-color: var(--color-button2); 
+  background-color: var(--color-button2);
   border-color: var(--color-button2);
 }
