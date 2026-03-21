@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./Schedule.css";
 import no from "../../../image/no.png";
 import yes from "../../../image/yes.png";
+import editIcon from "../../../image/editIcon.png";
 
 const Schedule = ({ onBack }) => {
   const initialData = {
@@ -90,12 +91,24 @@ const Schedule = ({ onBack }) => {
                 onChange={handleChange}
               />
             </div>
+
+            <div className="field">
+              <textarea
+                maxLength={2000}
+                id="additionalWorks"
+                className="accentBorder accentBorderFile"
+                name="additionalWorks"
+                rows="4"
+                value={data.additionalWorks}
+                onChange={handleChange}
+                ref={textareaRef}
+                placeholder="Дополнительно выполненные работы"
+                style={{ resize: "none", overflow: "hidden" }}
+              />
+            </div>
             <div className="buttons">
               <button className="saveButton" onClick={handleSave}>
                 Сохранить
-              </button>
-              <button className="cancelButton" onClick={handleCancel}>
-                Отмена
               </button>
             </div>
           </>
@@ -113,27 +126,30 @@ const Schedule = ({ onBack }) => {
             <p>
               <strong>Задача:</strong> {data.task}
             </p>
+            <div className="field">
+              <textarea
+                maxLength={2000}
+                id="additionalWorks"
+                className="accentBorder accentBorderFile"
+                name="additionalWorks"
+                rows="4"
+                value={data.additionalWorks}
+                onChange={handleChange}
+                ref={textareaRef}
+                placeholder="Дополнительно выполненные работы"
+                style={{ resize: "none", overflow: "hidden" }}
+              />
+            </div>
           </>
         )}
-
-        <div className="field">
-          <textarea
-            maxLength={2000}
-            id="additionalWorks"
-            className="accentBorder accentBorderFile"
-            name="additionalWorks"
-            rows="4"
-            value={data.additionalWorks}
-            onChange={handleChange}
-            ref={textareaRef}
-            placeholder="Дополнительно выполненные работы"
-            style={{ resize: "none", overflow: "hidden" }}
-          />
-        </div>
 
         <div className="images">
           <img src={no} alt="Нет" />
           <img src={yes} alt="Да" />
+        </div>
+        <div className="images">
+          <img src={no} alt="Нет" />
+          <img src={editIcon} alt="Редактировать" onClick={handleEditClick} />
         </div>
       </div>
     </div>
