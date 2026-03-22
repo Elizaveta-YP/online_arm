@@ -1,0 +1,71 @@
+.popup-five {
+  background: var(--neutral-color);
+  border-radius: 30px;
+  width: 500px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.popup-five-title {
+  font-size: var(--text);
+  text-align: center;
+  border-radius: 30px;
+  border: 1px solid var(--neutral-color);
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.taskButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.taskButton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--all-role-color);
+  border: 1px solid var(--neutral-color);
+  border-radius: 30px;
+  padding: 12px 20px 12px 0;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.buttonIcon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-left: 20px;
+}
+
+.engineersButtons {
+  background-color: var(--engineer-color);
+}
+
+.popup-five-actions {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.action-icon {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.action-icon:hover {
+  transform: scale(1.05);
+}

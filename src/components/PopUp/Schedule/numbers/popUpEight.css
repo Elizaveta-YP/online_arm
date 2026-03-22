@@ -1,0 +1,75 @@
+.popup-eight {
+  background: var(--neutral-color);
+  border-radius: 30px;
+  padding: 24px;
+  width: 500px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.popup-eight-title {
+  font-size: var(--text, 1.25rem);
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 30px;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.buttonGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.buttonEight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--engineer-color);
+  border: 1px solid var(--neutral-color);
+  border-radius: 30px;
+  padding: 12px 20px 12px 0;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.buttonIcon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-left: 20px;
+}
+
+.popup-eight-actions {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.action-icon {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+/* вторая форма */
+.controlButtonColorOne {
+  background-color: var(--all-role-color);
+}
+
+/* третья форма */
+.controlButtonColorTwo {
+  background-color: var(--accent-role-color);
+  color: var(--neutral-color);
+}

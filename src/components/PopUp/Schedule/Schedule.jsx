@@ -3,6 +3,12 @@ import "./Schedule.css";
 import popUpOne from "./numbers/popUpOne";
 import popUpTwo from "./numbers/popUpTwo";
 import popUpThree from "./numbers/popUpThree";
+import popUpFour from "./numbers/popUpFour";
+import popUpFive from "./numbers/popUpFive";
+import popUpSix from "./numbers/popUpSix";
+import popUpSeven from "./numbers/popUpSeven";
+import popUpEight from "./numbers/popUpEight";
+import popUpNine from "./numbers/popUpNine";
 
 // Простой попап для кнопок 2–10
 const PopupSimple = ({ title, content, onClose }) => (
@@ -70,17 +76,71 @@ const Schedule = () => {
           </div>
         );
       case 4:
-        return <PopupSimple title="Попап 4" content="Содержимое четвёртого попапа." onClose={closePopup} />;
+         return (
+          <div className="modal-overlay" onClick={closePopup}>
+            <div className="popup-wrapper" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close" onClick={closePopup}>
+                &times;
+              </button>
+              {React.createElement(popUpFour, { onBack: closePopup })}
+            </div>
+          </div>
+        );
       case 5:
-        return <PopupSimple title="Попап 5" content="Содержимое пятого попапа." onClose={closePopup} />;
+        return (
+          <div className="modal-overlay" onClick={closePopup}>
+            <div className="popup-wrapper" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close" onClick={closePopup}>
+                &times;
+              </button>
+              {React.createElement(popUpFive, { onBack: closePopup })}
+            </div>
+          </div>
+        );
       case 6:
-        return <PopupSimple title="Попап 6" content="Содержимое шестого попапа." onClose={closePopup} />;
+         return (
+          <div className="modal-overlay" onClick={closePopup}>
+            <div className="popup-wrapper" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close" onClick={closePopup}>
+                &times;
+              </button>
+              {React.createElement(popUpSix, { onBack: closePopup })}
+            </div>
+          </div>
+        );
       case 7:
-        return <PopupSimple title="Попап 7" content="Содержимое седьмого попапа." onClose={closePopup} />;
+         return (
+          <div className="modal-overlay" onClick={closePopup}>
+            <div className="popup-wrapper" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close" onClick={closePopup}>
+                &times;
+              </button>
+              {React.createElement(popUpSeven, { onBack: closePopup })}
+            </div>
+          </div>
+        );
       case 8:
-        return <PopupSimple title="Попап 8" content="Содержимое восьмого попапа." onClose={closePopup} />;
+        return (
+          <div className="modal-overlay" onClick={closePopup}>
+            <div className="popup-wrapper" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close" onClick={closePopup}>
+                &times;
+              </button>
+              {React.createElement(popUpEight, { onBack: closePopup })}
+            </div>
+          </div>
+        );
       case 9:
-        return <PopupSimple title="Попап 9" content="Содержимое девятого попапа." onClose={closePopup} />;
+        return (
+          <div className="modal-overlay" onClick={closePopup}>
+            <div className="popup-wrapper" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close" onClick={closePopup}>
+                &times;
+              </button>
+              {React.createElement(popUpNine, { onBack: closePopup })}
+            </div>
+          </div>
+        );
       case 10:
         return <PopupSimple title="Попап 10" content="Содержимое десятого попапа." onClose={closePopup} />;
       default:

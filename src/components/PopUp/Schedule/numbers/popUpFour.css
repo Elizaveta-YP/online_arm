@@ -1,0 +1,47 @@
+.popup-four {
+  background: var(--neutral-color);
+  padding: 24px;
+  width: 500px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  text-align: center;
+  border-block: 4px solid var(--accent-color);
+}
+
+.popup-four-title {
+ font-size: var(--text);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.popup-four-textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  resize: vertical;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.popup-four-actions {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.action-icon {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.accentBorderFile {
+  font-size: var(--text);
+}

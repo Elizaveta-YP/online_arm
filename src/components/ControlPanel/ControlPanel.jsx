@@ -9,6 +9,7 @@ import DepartureRequest from "../PopUp/DepartureRequest/DepartureRequest";
 import EquipmentCollection from "../PopUp/EquipmentCollection/EquipmentCollection";
 import PaidDeparturesReport from "../PopUp/PaidDeparturesReport/PaidDeparturesReport";
 import Schedule from '../PopUp/Schedule/Schedule';
+import Documents from '../PopUp/Documents/Documents';
 // import Archive from '../PopUp/Archive/Archive'; ДОБАВИМ НЕМНОГО ПОЗЖЕ
 
 const ControlPanel = ({ onLogout, userPhone, userInnKpp }) => {
@@ -24,6 +25,7 @@ const ControlPanel = ({ onLogout, userPhone, userInnKpp }) => {
     { text: "Подать заявку на выезд", page: "departure" },
     { text: "Забор оборудования в ремонт", page: "equipment" },
     { text: "Отчет по платным выездам", page: "paidReport" },
+    { text: "Документы", page: "documents" },  
     { text: "График", page: "schedule", color: "button2" },
     { text: "Архив", page: "archive", color: "button2" },
   ];
@@ -42,6 +44,8 @@ const ControlPanel = ({ onLogout, userPhone, userInnKpp }) => {
         return <EquipmentCollection onBack={goBack} />;
       case "paidReport":
         return <PaidDeparturesReport onBack={goBack} />;
+         case "documents":                                   
+        return <Documents onBack={goBack} />;
       case 'schedule':
         return <Schedule onBack={goBack} />;
       // case 'archive':

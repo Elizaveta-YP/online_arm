@@ -1,0 +1,106 @@
+.popup-nine {
+  background: var(--neutral-color);
+  border-radius: 30px;
+  padding: 24px;
+  width: 500px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.popup-nine-title {
+  font-size: var(--text);
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 30px;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.buttonGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.controlButton {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  border: 1px solid var(--neutral-color);
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.2s;
+  white-space: normal;
+  word-wrap: break-word;
+  padding: 12px 20px;
+}
+
+.button-one {
+  background-color: var(--color-button2);
+}
+
+.button-two {
+  background-color: var(--color-button2);
+}
+
+.button-three {
+  background-color: var(--accent-role-color);
+}
+
+.buttonIcon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-left: 20px;
+}
+
+.popup-nine-actions {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.action-icon {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.two-columns-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.stock-button {
+  background-color: var(--color-button2);
+}
+
+.stock-button .buttonIcon {
+  margin-left: 20px;
+}
+
+.buttonIconRight {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.controlButton.right-icon-button {
+  justify-content: space-between; 
+}
+
+.buttonIconRight {
+  margin-left: auto;
+}

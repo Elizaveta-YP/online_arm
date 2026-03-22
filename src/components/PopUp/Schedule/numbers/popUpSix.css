@@ -1,0 +1,87 @@
+.popup-six {
+  background: var(--neutral-color);
+  border-radius: 30px;
+  padding: 24px;
+  width: 500px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.popup-six-title {
+  font-size: var(--text);
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 30px;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.field {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.textarea-container {
+  position: relative;
+  width: 100%;
+}
+
+.textarea-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.accentBorders {
+  width: 100%;
+  border: 1px solid var(--neutral-color);
+  border-radius: 30px;
+  font-size: 1rem;
+  background-color: var(--fields);
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  resize: none;
+  line-height: 1.4;
+}
+
+.popup-six .accentBorders {
+  padding-left: 52px;
+}
+
+.popup-six-actions {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.action-icon {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.action-icon:hover {
+  transform: scale(1.05);
+}
+
+/*вторая форма*/
+.accentBordersColor {
+  background-color: #ff0080;
+}
+
+.popup-six .accentBorders::placeholder {
+  color: black;
+  font-size: 0.9rem;
+}
